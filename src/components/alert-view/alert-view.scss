@@ -1,0 +1,28 @@
+alert-view {
+    section{
+        background: url(../assets/imgs/popup-bg.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        max-width: 90%;
+        margin: auto;
+        padding: 22px;
+        height: auto;
+        min-height: 265px;
+        position: relative;
+        div {
+            color: white !important;
+        }
+        .btn{
+            background: url(../assets/imgs/popup-button-bg.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* top: 75%; */
+            bottom: 60px;
+            right: 16%;
+            position: absolute;
+            width: 64%;
+            padding: 1px;
+            height: 34px;
+    }
+}
+}

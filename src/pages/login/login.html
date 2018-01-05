@@ -1,0 +1,49 @@
+
+<ion-content padding>
+  
+
+  <div class="container">
+
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label>
+            Please enter the Activation Code provided by the HCPs to start using the App:
+          </ion-label>
+        </ion-item>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col col-10>
+              <ion-input class="text-input" [(ngModel)]="password" clearInput type="password" placeholder="Access PIN/Passcode" name="pass"></ion-input>
+            </ion-col>
+            <ion-col col-2>
+              <button ion-button clear small float-right (click)="navigateToProcess()">
+                  <ion-icon name="search"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+   
+  </div>
+  <div class="btnIcon">
+    <img src="assets/imgs/menu.png">
+  </div>
+
+</ion-content>
+
+<ion-footer no-border>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <img src="assets/imgs/lilly-logo.png">
+      </ion-col>
+      <ion-col col-7>
+        <span>
+          聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

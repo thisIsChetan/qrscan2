@@ -1,0 +1,242 @@
+<!--
+  Generated template for the ProcessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <div class="progessImg">
+        <img [src]="this.images.src[currentIndex]">
+      </div>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3 class="index-4" [ngClass]="{'active-header' : currentIndex == 0 }">
+        Product Source
+      </ion-col>
+      <ion-col col-3 class="index-3" [ngClass]="{'active-header' : currentIndex == 1 }">Code Scanner</ion-col>
+      <ion-col col-3 class="index-2" [ngClass]="{'active-header' : currentIndex == 2 }">Validate Packaging</ion-col>
+      <ion-col col-3 class="index-1" [ngClass]="{'active-header' : currentIndex == 3 }">Complete Validation</ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div class="shodowImg">
+    <img src="assets/imgs/step-shodow.png">
+  </div> -->
+  <ion-toolbar *ngIf="view == '2.3'">
+    <button ion-button icon-only left clear (click)="changeView('2.1')">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>
+      <span *ngIf="packageType == '5mg'">Cialis 5mg Package Authentication Guide</span>
+      <span *ngIf="packageType == '20mg'">Cialis 20mg Package Authentication Guide</span>
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <ion-list radio-group [(ngModel)]="purchaseFrom" no-lines>
+        <ion-list-header>
+          Cialis purchased from :
+        </ion-list-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-1>
+              <div class="btnRadio">
+                <img [src]="clickUrl" *ngIf="radioValue !== 'hospital'" (click)="radioBtn('hospital')">
+                <img [src]="unClickUrl" *ngIf="radioValue == 'hospital'" (click)="radioBtn('hospital')">
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <span (click)="radioBtn('hospital')">Hospital</span>
+            </ion-col>
+            <ion-col class="inputCol">
+              <ion-input type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <div class="btnRadio">
+                <img [src]="clickUrl" *ngIf="radioValue !== 'pharmacy'" (click)="radioBtn('pharmacy')">
+                <img [src]="unClickUrl" *ngIf="radioValue == 'pharmacy'" (click)="radioBtn('pharmacy')">
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <span (click)="radioBtn('pharmacy')">Pharmacy</span>
+            </ion-col>
+            <ion-col class="inputCol">
+              <ion-input type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <div class="btnRadio">
+                <img [src]="clickUrl" *ngIf="radioValue !== 'other'" (click)="radioBtn('other')">
+                <img [src]="unClickUrl" *ngIf="radioValue == 'other'" (click)="radioBtn('other')">
+              </div>
+            </ion-col>
+            <ion-col col-4>
+              <span (click)="radioBtn('other')">Other</span>
+            </ion-col>
+            <ion-col class="inputCol">
+              <ion-input type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+
+      <div class="noticeBtn" tappable (click)="nextSlide()">
+        <p> Notice!
+          <br> Cialis is not distributed and sold in online shops.
+        </p>
+        <img src="assets/imgs/button-bg.png">
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <section *ngIf="view == '1.1'">
+        <h2>Barcode Scanning in progress...</h2>
+        <button ion-button (click)="changeView('1.2')"></button>
+      </section>
+      <section *ngIf="view == '1.2'">
+        <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'"
+          (buttonClick)="changeView('1.3')"></alert-view>
+      </section>
+      <section *ngIf="view == '1.3'">
+        <alert-view [text]="resText" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
+      </section>
+    </ion-slide>
+
+    <ion-slide>
+      <section *ngIf="view == '2.1'">
+        <ion-list radio-group [(ngModel)]="packageType" no-lines>
+          <ion-list-header>
+            Choose the type of Cialis packaging for further validation:
+          </ion-list-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col col-1>
+                <div class="btnRadio">
+                  <img [src]="clickUrl" *ngIf="packageType !== '5mg'" (click)="radioBtn('5mg')">
+                  <img [src]="unClickUrl" *ngIf="packageType == '5mg'" (click)="radioBtn('5mg')">
+                </div>
+              </ion-col>
+              <ion-col col-5>
+                <span (click)="radioBtn('5mg')">Cialis 5mg</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-1>
+                <div class="btnRadio">
+                  <img [src]="clickUrl" *ngIf="packageType !== '20mg'" (click)="radioBtn('20mg')">
+                  <img [src]="unClickUrl" *ngIf="packageType == '20mg'" (click)="radioBtn('20mg')">
+                </div>
+              </ion-col>
+              <ion-col col-5>
+                <span (click)="radioBtn('20mg')">Cialis 20mg</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+        <button ion-button (click)="changeView('2.2')"> Next </button>
+      </section>
+
+      <section *ngIf="view == '2.2'">
+        <alert-view [text]="'Please follow the product validation image guide presented to verify the packaging.'" [buttonText]="'OK'"
+          (buttonClick)="getImg(packageType)"></alert-view>
+      </section>
+
+      <section *ngIf="view == '2.3'">
+          <!-- <img *ngIf="packageType == '5mg'" src="assets/imgs/pill5.png" >
+          <img *ngIf="packageType == '20mg'" src="assets/imgs/pill20.png" > -->
+          <img  [src]="medImgURL" >
+          
+        <div class="noticeBtn" tappable (click)="changeView('2.4')">
+          <p> Notice!
+            <br> Cialis is not distributed and sold in online shops.
+          </p>
+          <img src="assets/imgs/button-bg.png">
+        </div>
+      </section>
+      <section *ngIf="view == '2.4'">
+        <ion-list radio-group [(ngModel)]="verificationResult" no-lines>
+          <ion-list-header>
+            Package verification result:
+          </ion-list-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col col-1>
+                <div class="btnRadio">
+                  <img [src]="clickUrl" *ngIf="verificationResult !== 'ALL'" (click)="radioBtn('ALL')">
+                  <img [src]="unClickUrl" *ngIf="verificationResult == 'ALL'" (click)="radioBtn('ALL')">
+                </div>
+              </ion-col>
+              <ion-col >
+                <span (click)="radioBtn('ALL')">All checkpoint passed</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-1>
+                  <div class="btnRadio">
+                    <img [src]="clickUrl" *ngIf="verificationResult !== 'SOME'" (click)="radioBtn('SOME')">
+                    <img [src]="unClickUrl" *ngIf="verificationResult == 'SOME'" (click)="radioBtn('SOME')">
+                  </div>
+                </ion-col>
+                <ion-col >
+                  <span (click)="radioBtn('SOME')">Some didn’t match correctly</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col col-1>
+                    <div class="btnRadio">
+                      <img [src]="clickUrl" *ngIf="verificationResult !== 'NOT_SURE'" (click)="radioBtn('NOT_SURE')">
+                      <img [src]="unClickUrl" *ngIf="verificationResult == 'NOT_SURE'" (click)="radioBtn('NOT_SURE')">
+                    </div>
+                  </ion-col>
+                  <ion-col >
+                    <span (click)="radioBtn('NOT_SURE')">Some didn’t match correctly</span>
+                  </ion-col>
+                </ion-row>
+          </ion-grid>
+        </ion-list>
+        <button ion-button (click)="changeView('2.5')"> Next </button>
+      </section>
+      <section *ngIf="view == '2.5'">
+        <alert-view [text]="'Authentication Passed.!<br>Product is confirmed to be distributed by Lilly Taiwan.'" [buttonText]="'OK'"
+          (buttonClick)="nextSlide()"></alert-view>
+      </section>
+    </ion-slide>
+
+    <ion-slide>
+      <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="goToSlide(0)"></alert-view>
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="btnIcon" *ngIf="view == '2.1' || view == '2.4'">
+    <img src="assets/imgs/menu.png">
+  </div>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <img src="assets/imgs/lilly-logo.png">
+      </ion-col>
+      <ion-col col-7>
+        <span>
+          聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
