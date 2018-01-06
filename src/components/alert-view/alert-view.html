@@ -1,10 +1,8 @@
 <!-- Generated template for the AlertViewComponent component -->
 <section>
-    <div [innerHTML]="text">
+    <p [innerHTML]="text"></p>
+    <div (click)="buttonclick()" *ngIf="buttonText != undefined">
+        {{buttonText}} 
     </div>
-    <div class="btn" (click)="buttonclick()" >
-            {{buttonText}} 
-    </div>
-    <!-- <button ion-button  block small> </button> -->
 </section>
 

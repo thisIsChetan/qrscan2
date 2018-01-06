@@ -1,28 +1,28 @@
 alert-view {
     section{
         background: url(../assets/imgs/popup-bg.png);
-        background-size: contain;
         background-repeat: no-repeat;
-        max-width: 90%;
         margin: auto;
+        background-size: 100% 100%;
         padding: 22px;
         height: auto;
-        min-height: 265px;
-        position: relative;
-        div {
-            color: white !important;
+        min-height: 250px;
+        width:85%;
+        max-width: 388px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction:column;        
+        p{
+            color: white;
         }
-        .btn{
+        div{
             background: url(../assets/imgs/popup-button-bg.png);
-            background-size: contain;
+            background-size: 100% 100%;
             background-repeat: no-repeat;
-            /* top: 75%; */
-            bottom: 60px;
-            right: 16%;
-            position: absolute;
             width: 64%;
-            padding: 1px;
-            height: 34px;
-    }
+            padding: 6px;
+            color: white;
+        }
 }
 }
