@@ -66,15 +66,15 @@ export class ProcessPage {
       this.view = "2.1";
     }else if(_currentIndex == 3){
       this.view = '3.1';
-      this.postData = {
-        "scannedCode": "0104711928261089211989187206841719010110A17080305",
-        "scannedDate": "2018-01-04",
-        "purchasedFrom": "Hospital",
-        "purchasedName": "rep",
-        "productDose": "5 mg",
-        "scanStatus": "pass",
-        "userConclusion": "ok"
-      }
+      // this.postData = {
+      //   "scannedCode": "0104711928261089211989187206841719010110A17080305",
+      //   "scannedDate": "2018-01-04",
+      //   "purchasedFrom": "Hospital",
+      //   "purchasedName": "rep",
+      //   "productDose": "5 mg",
+      //   "scanStatus": "pass",
+      //   "userConclusion": "ok"
+      // }
       this.postData.scannedDate = "2018-01-04";
       this.postData.purchasedFrom = this.purchaseFrom;
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
@@ -83,6 +83,10 @@ export class ProcessPage {
       this.postData.userConclusion = this.verificationResult;
       this.sendData.send(this.postData).subscribe((data)=>{
         console.log(data);
+        this.view = '3.s'
+      },(data)=>{
+        console.log(data);
+        this.view = '3.e'
       })
     }
     
@@ -103,7 +107,7 @@ export class ProcessPage {
   showBarcode(){
     this.barcode.scan().then((data:any)=>{
       this.postData.scannedCode = data.text;
-      this.postData.scannedDate = "2018-01-05";
+      // this.postData.scannedDate = "2018-01-05";
       this.barcode.validate(data).subscribe((isValid)=>{
         if(isValid){
           this.showBarcodeRes("Code Validated!<br>Proceed to next step…");

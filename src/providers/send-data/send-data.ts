@@ -19,10 +19,13 @@ export class SendDataProvider {
     let headers = new Headers({ 
         'Content-Type': 'application/json'
     });
-    let data = postData
-
-    return this.http.post(GLOBALS.BARCODE_URL, data,{headers : headers})
-    .map(res => res.json())
+    console.log("req", postData);
+    return this.http.post(GLOBALS.SEND_DATA_URL, postData,{headers : headers})
+    .map((res) =>{
+      console.log(res);
+      let resJson = res.json();
+      return resJson;
+    })
 
 }
 
