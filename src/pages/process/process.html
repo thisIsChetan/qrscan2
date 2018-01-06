@@ -73,7 +73,7 @@
 
     <ion-slide>
       <section *ngIf="view == '1.1'">
-        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '" (buttonClick)="changeView('1.2')"></alert-view>
+        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '" ></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
         <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.3')"></alert-view>
@@ -178,13 +178,13 @@
 
     <ion-slide>
       <section *ngIf="view == '3.1'">
-        <alert-view [text]="'Sending data to server..'" [buttonText]="' '" (buttonClick)="changeView('3.s')"></alert-view>
+        <alert-view [text]="'Sending data to server..'" [buttonText]="' '" ></alert-view>
       </section>
       <section *ngIf="view == '3.s'">
           <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '3.e'">
-        <alert-view [text]="'Validation details send Error'" [buttonText]="' '" (buttonClick)="changeView('1.2')"></alert-view>
+        <alert-view [text]="'Validation details send Error'"  [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
 
     </ion-slide>
