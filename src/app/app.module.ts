@@ -14,7 +14,8 @@ import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-
 import { ComponentsModule } from '../components/components.module'
 import { BarcodeProvider } from '../providers/barcode/barcode';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { ContentProvider } from '../providers/content/content'; 
+import { ContentProvider } from '../providers/content/content';
+import { SendDataProvider } from '../providers/send-data/send-data'; 
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ContentProvider } from '../providers/content/content';
     Camera,
     BarcodeProvider,
     BarcodeScanner,
-    ContentProvider
+    ContentProvider,
+    SendDataProvider
   ]
 })
 export class AppModule { }

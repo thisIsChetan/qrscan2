@@ -18,3 +18,18 @@ ion-content{
     background:url("../assets/imgs/bg.png");
     background-size: contain;
 }
+// ion-footer{
+//     z-index: 1 !important;
+// }
+// ion-content{
+//     z-index: 2 !important;
+// }
+
+.red-button{
+    background: url(../assets/imgs/popup-button-bg.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 64%;
+    padding: 6px;
+    color: white;
+}

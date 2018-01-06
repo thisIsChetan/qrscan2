@@ -53,8 +53,9 @@ export class BarcodeProvider {
       return this.http.post(GLOBALS.BARCODE_URL, data,{headers : headers})
       .map((res) =>{
         console.log(res);
-        res = res.json();
-        return res[0].exists
+        let resJson = res.json();
+        console.log(resJson);
+        return resJson.exists
       })
 
 
