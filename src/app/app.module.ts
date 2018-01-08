@@ -18,7 +18,7 @@ import { BarcodeProvider } from '../providers/barcode/barcode';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ContentProvider } from '../providers/content/content';
 import { SendDataProvider } from '../providers/send-data/send-data'; 
-
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ import { SendDataProvider } from '../providers/send-data/send-data';
     BarcodeScanner,
     ContentProvider,
     SendDataProvider,
-    Keyboard
+    Keyboard,
+    HTTP
   ]
 })
 export class AppModule { }
