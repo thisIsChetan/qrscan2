@@ -33,3 +33,7 @@ ion-content{
     padding: 6px;
     color: white;
 }
+
+body.keyboard-is-open ion-footer {
+    display: none;
+  }

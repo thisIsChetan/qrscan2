@@ -24,20 +24,23 @@ export class LoginPage {
                public navParams: NavParams, 
                public authServiceProvider: AuthServiceProvider,
                private platform: Platform ) {
+                 console.log("hjfggh");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    
   }
 
   navigateToProcess() {
+    
     if(this.platform.is('core') || this.platform.is('mobileweb')) {
-      this.navCtrl.push("ProcessPage");
+      this.navCtrl.setRoot("ProcessPage");
     }else{
       this.authServiceProvider.isValid(this.password).subscribe((data)=>{
         if(data){
           if(data.status == "OK"){
-           this.navCtrl.push("ProcessPage");
+           this.navCtrl.setRoot("ProcessPage");
           }
           else{
             alert("Wrong Password");

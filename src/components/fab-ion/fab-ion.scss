@@ -1,0 +1,30 @@
+ion-fab {
+    .fab{
+        background-color: transparent;
+    }
+    ion-fab-list {
+        margin: 63px 0;
+        position: absolute;
+        right: 50%;
+        width: -webkit-fill-available;
+        display: none;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        min-width: 65px;
+        min-height: 56px;
+        .fab-in-list{
+            width: auto !important;
+            color: white;
+        }
+        .fab-in-list.show{
+            background: transparent;
+        }
+    }
+}

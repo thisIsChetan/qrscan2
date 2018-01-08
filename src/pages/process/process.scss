@@ -1,6 +1,5 @@
 page-process {
     ion-header{
-        // border: 1px solid;
         height: 50px;
         .img0{
             background-image: url(../assets/imgs/01-Step.png) ;
@@ -27,19 +26,14 @@ page-process {
             padding: 0px !important;
             height: 100%;
             ion-row{
-                // position: absolute;
-                // top: 0px;
-
                 height: 100%;
+                display: flex !important;
+                align-items: center;
                 ion-col{
                     color: white;
                     text-align: center;
                     position: relative;
                     margin-top: 5px !important;
-                    // background:url("../../assets/imgs/step-line-01.png");
-                    // background-size: contain;
-                    // border: 2px solid #c2e1f5;
-                    // padding-left: 22px !important;
                     font-size: 12px;
                 }
             }
@@ -134,13 +128,18 @@ page-process {
                     background: white;
                     border-radius: 7px;
                     color: black;
+                    position: relative;
 
                     .text-input::-webkit-input-placeholder {
                         color: black;
-                        display: block;
-                        -webkit-line-break: normal;
-                        font-size: 20px;
-                      }
+                        margin-top: 5px !important;
+
+                        white-space: pre-line !important;
+                        max-width: none !important;
+                        font-size: 10px;
+   
+                        // line-height: normal;
+                    }
                 } 
             }
            
@@ -180,7 +179,13 @@ page-process {
            }
         }
     }
+
+    body.keyboard-open .has-footer{	
+        bottom: 0;
+        }
     ion-footer{
+       
+
         background: transparent !important;
         height: 50px;
         color: white !important;
