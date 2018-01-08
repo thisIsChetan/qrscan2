@@ -1,6 +1,7 @@
-import {Http, Headers} from '@angular/http';
+// import {Http, Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
-import { GLOBALS } from '../../data/globals'
+import { GLOBALS } from '../../data/globals';
+import { HTTP } from '@ionic-native/http';
 
 /*
   Generated class for the SendDataProvider provider.
@@ -11,20 +12,24 @@ import { GLOBALS } from '../../data/globals'
 @Injectable()
 export class SendDataProvider {
 
-  constructor(public http: Http) {
+  constructor(public http: HTTP) {
     console.log('Hello SendDataProvider Provider');
   }
 
   send(postData){
-    let headers = new Headers({ 
-        'Content-Type': 'application/json'
-    });
-    console.log("req", postData);
-    return this.http.post(GLOBALS.SEND_DATA_URL, postData,{headers : headers})
-    .map((res) =>{
-      console.log(res);
-      let resJson = res.json();
-      return resJson;
+
+    return new Promise((resolve, reject)=>{
+      let headers = {};
+      this.http.setDataSerializer("json");
+      this.http.setHeader("Accept", "application/json");
+      this.http.setHeader("Content-Type", "application/json");
+      this.http.post(GLOBALS.AUTH_URL, postData, headers).then((res)=>{
+        console.log(res);
+        // alert(JSON.stringify(data.data));
+        resolve(JSON.parse(res.data));
+      }).catch((err)=>{
+        reject(err);
+      })
     })
 
 }

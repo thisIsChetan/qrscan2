@@ -1,8 +1,9 @@
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+// import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { GLOBALS } from '../../data/globals'
+import { GLOBALS } from '../../data/globals';
+import { HTTP } from '@ionic-native/http';
 
 
 /*
@@ -21,7 +22,7 @@ export class BarcodeProvider {
     }
   };
   constructor(private barcodeScanner: BarcodeScanner,
-              private http: Http) {
+              private http: HTTP) {
     console.log('Hello BarcodeProvider Provider');
   }
 
@@ -41,24 +42,45 @@ export class BarcodeProvider {
     })
   }
 
+  // validate(barcodeData){
+
+  //     console.log("Barcode Scanned", barcodeData);
+  //     let headers = new Headers({ 
+  //         'Content-Type': 'application/json'
+  //     });
+  //     let data = {          
+  //         "product_code": barcodeData.text
+  //     }
+  //     return this.http.post(GLOBALS.BARCODE_URL, data,{headers : headers})
+  //     .map((res) =>{
+  //       console.log(res);
+  //       let resJson = res.json();
+  //       console.log(resJson);
+  //       return resJson.exists
+  //     })
+
+
+  // }
+
   validate(barcodeData){
+    return new Promise((resolve, reject)=>{
 
       console.log("Barcode Scanned", barcodeData);
-      let headers = new Headers({ 
-          'Content-Type': 'application/json'
-      });
+      let headers = {};
       let data = {          
           "product_code": barcodeData.text
       }
-      return this.http.post(GLOBALS.BARCODE_URL, data,{headers : headers})
-      .map((res) =>{
+  
+      this.http.setDataSerializer("json");
+      this.http.setHeader("Accept", "application/json");
+      this.http.setHeader("Content-Type", "application/json");
+      this.http.post(GLOBALS.BARCODE_URL, data, headers).then((res: any)=>{
         console.log(res);
-        let resJson = res.json();
-        console.log(resJson);
-        return resJson.exists
+        resolve(JSON.parse(res.data).exists);
+      }).catch((err)=>{
+        reject(err);
       })
-
-
+    })
   }
 
 

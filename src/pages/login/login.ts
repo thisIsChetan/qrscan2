@@ -33,20 +33,23 @@ export class LoginPage {
   }
 
   navigateToProcess() {
-    
-    if(this.platform.is('core') || this.platform.is('mobileweb')) {
+    if((this.platform.is('core') || this.platform.is('mobileweb'))) {
       this.navCtrl.setRoot("ProcessPage");
     }else{
-      this.authServiceProvider.isValid(this.password).subscribe((data)=>{
+      this.authServiceProvider.isValid(this.password).then((data:any)=>{
+        console.log(data);
         if(data){
           if(data.status == "OK"){
-           this.navCtrl.setRoot("ProcessPage");
+          this.navCtrl.setRoot("ProcessPage");
           }
           else{
             alert("Wrong Password");
           }
         }
-      })  
+      }).catch((err)=>{
+        alert("Something went wrong.");
+      }) 
+     
     }
   
   }
