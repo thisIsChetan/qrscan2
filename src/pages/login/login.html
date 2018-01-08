@@ -12,9 +12,10 @@
         </ion-item>
 
         <ion-grid>
+          <form>
           <ion-row>
             <ion-col col-10>
-              <ion-input class="text-input" [(ngModel)]="password" clearInput type="password" placeholder="Access PIN/Passcode" name="pass"></ion-input>
+              <ion-input class="text-input" [(ngModel)]="password" clearInput type="number" pattern="[0-9]*" placeholder="Access PIN/Passcode" name="pass"></ion-input>
             </ion-col>
             <ion-col col-2 class="searchBtn">
               <button ion-button clear small float-right (click)="navigateToProcess()">
@@ -22,6 +23,8 @@
               </button>
             </ion-col>
           </ion-row>
+          <span *ngIf="errorMsg">{{errorMsg}}</span>
+          </form>
         </ion-grid>
       </ion-list>
    

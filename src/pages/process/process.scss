@@ -78,23 +78,9 @@ page-process {
                 background: white !important;
                 padding: 0px !important;
                 border-radius: 5px;
-
-                // .text-input::-moz-placeholder {
-                //     color: black;
-                //     font-size: 10px;
-                //     white-space: pre-line;
-                //   }
-                  
-                //   .text-input:-ms-input-placeholder {
-                //     color: black;
-                //     font-size: 10px;
-                //     white-space: pre-line;
-                //   }
                   
                   .text-input::-webkit-input-placeholder {
                     color: black;
-          
-                    // white-space: pre-line;
                   }
              }
              ion-row{
@@ -123,6 +109,9 @@ page-process {
                 border-bottom: none !important;
                 ion-label{
                     color: white !important;
+                    span{
+                        white-space: pre-line;
+                    }
                 }   
                 ion-input{
                     background: white;
