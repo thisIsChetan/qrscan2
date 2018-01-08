@@ -1,5 +1,5 @@
 
-<ion-content padding>
+<ion-content padding no-bounce>
   
 
   <div class="container">
@@ -16,7 +16,7 @@
             <ion-col col-10>
               <ion-input class="text-input" [(ngModel)]="password" clearInput type="password" placeholder="Access PIN/Passcode" name="pass"></ion-input>
             </ion-col>
-            <ion-col col-2>
+            <ion-col col-2 class="searchBtn">
               <button ion-button clear small float-right (click)="navigateToProcess()">
                   <ion-icon name="search"></ion-icon>
               </button>
@@ -26,9 +26,11 @@
       </ion-list>
    
   </div>
-  <div class="btnIcon">
+
+  <fab-ion></fab-ion>
+  <!-- <div class="btnIcon">
     <img src="assets/imgs/menu.png">
-  </div>
+  </div> -->
 
 </ion-content>
 

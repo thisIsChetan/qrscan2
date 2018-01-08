@@ -9,6 +9,8 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Keyboard } from '@ionic-native/keyboard';
+
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
 import { ComponentsModule } from '../components/components.module'
@@ -52,7 +54,8 @@ import { SendDataProvider } from '../providers/send-data/send-data';
     BarcodeProvider,
     BarcodeScanner,
     ContentProvider,
-    SendDataProvider
+    SendDataProvider,
+    Keyboard
   ]
 })
 export class AppModule { }

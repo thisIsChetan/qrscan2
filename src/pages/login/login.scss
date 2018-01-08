@@ -29,9 +29,12 @@ page-login {
                    color: white;
                    font-weight: bold;
                  }
+                 .searchBtn{
+                    display: flex;
+                    align-items: center !important;
+                    justify-content: center !important;
                  [ion-button]{
                  text-decoration: none;
-                 
                  color: white !important;
                  border-radius: 20% !important;
                  background: linear-gradient(top, #c91640 43%,#f00038 );
@@ -39,19 +42,21 @@ page-login {
                      font-weight: bold;
                  }
                  }
+                }
            }
        }
    
-   .btnIcon{
-       position: absolute;
-       top: 93%;
-       left: 86%;
-       width: 37px;
-   }
+//    .btnIcon{
+//        position: absolute;
+//        top: 93%;
+//        left: 86%;
+//        width: 37px;
+//    }
   
 }
 
 ion-footer{
+    
     background: transparent !important;
     height: 50px;
     color: white !important;
