@@ -1,11 +1,17 @@
 ion-fab {
     .fab{
         background-color: transparent;
+        border-radius: 0px !important;
+        top: 30px !important;
+        width: 26px;
+        height: 28px;
     }
     ion-fab-list {
-        margin: 63px 0;
+        margin: 69px 0;
         position: absolute;
-        right: 50%;
+        background: white;
+        border-radius: 5px;
+        color: black !important;
         width: -webkit-fill-available;
         display: none;
         -webkit-box-orient: vertical;
@@ -17,11 +23,15 @@ ion-fab {
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
-        min-width: 65px;
-        min-height: 56px;
+        width: 100px;
+
+        span{
+            color: black !important;
+            text-align: center;
+        }
         .fab-in-list{
             width: auto !important;
-            color: white;
+            color: black;
         }
         .fab-in-list.show{
             background: transparent;

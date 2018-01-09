@@ -6,10 +6,8 @@
 -->
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
-
-
     <ion-row>
-      <ion-col col-3>Product Source</ion-col>
+      <ion-col col-3>  Product Source </ion-col>
       <ion-col col-3>Code Scanner</ion-col>
       <ion-col col-3>Validate Packaging</ion-col>
       <ion-col col-3>Complete Validation</ion-col>
@@ -30,6 +28,7 @@
 
 
 <ion-content padding no-bounce>
+  
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <ion-list no-lines class="slide0-margin">
