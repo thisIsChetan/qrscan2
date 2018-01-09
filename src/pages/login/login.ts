@@ -18,8 +18,7 @@ import { Cordova } from '@ionic-native/core';
 })
 export class LoginPage {
 
-  password: string = '';
-  errorMsg:string;
+  password: string;
 
   constructor( public navCtrl: NavController,
                public navParams: NavParams, 
@@ -34,29 +33,24 @@ export class LoginPage {
   }
 
   navigateToProcess() {
-    if(this.password.length == 4 ){
-    if(this.platform.is('core') || this.platform.is('mobileweb')) {
+    if((this.platform.is('core') || this.platform.is('mobileweb'))) {
       this.navCtrl.setRoot("ProcessPage");
     }else{
-      this.authServiceProvider.isValid(this.password).subscribe((data)=>{
+      this.authServiceProvider.isValid(this.password).then((data:any)=>{
+        console.log(data);
         if(data){
           if(data.status == "OK"){
-           this.navCtrl.setRoot("ProcessPage");
+          this.navCtrl.setRoot("ProcessPage");
           }
           else{
-            this.errorMsg="Wrong Password";
+            alert("Wrong Password");
           }
         }
-        else{
-          this.errorMsg="Network Error";
-        }
-      })  
+      }).catch((err)=>{
+        alert("Something went wrong.");
+      }) 
+     
     }
-  }
-  else{
-    this.errorMsg="Invalid password length";
-  }
-
+  
   }
 }
-

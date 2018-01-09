@@ -81,10 +81,10 @@ export class ProcessPage {
       this.postData.productDose = this.packageType;
       this.postData.scanStatus = "pass";
       this.postData.userConclusion = this.verificationResult;
-      this.sendData.send(this.postData).subscribe((data)=>{
+      this.sendData.send(this.postData).then((data)=>{
         console.log(data);
         this.view = '3.s'
-      },(data)=>{
+      }).catch((data)=>{
         console.log(data);
         this.view = '3.e'
       })
@@ -103,41 +103,33 @@ export class ProcessPage {
     alert("dsg");
   }
   //Slide 1
-  resText:string;
+
   showBarcode(){
     this.barcode.scan().then((data:any)=>{
       this.postData.scannedCode = data.text;
       // this.postData.scannedDate = "2018-01-05";
-      this.barcode.validate(data).subscribe((isValid)=>{
+      this.barcode.validate(data).then((isValid)=>{
         if(isValid){
-          this.showBarcodeRes("Code Validated!<br>Proceed to next step…");
+          this.view = "1.s";
         }
         else{
-          this.showBarcodeRes(`Product authentication failed.<br> 
-          Kindly contact numbers below to report the counterfeit product.<br>         
-          Please contact support center during normal office hours: 0809-009-369<br> 
-          Or Toll-free Number 0800-285-000`);
+          this.view = "1.e";
         }
-      },(err)=>{
-        this.resText = `System encountered some error while validating.<br> 
-        Please contact support center during normal office hours: 0809-009-369<br> 
-        Or Toll-free Number 0800-285-000`;
-        this.view = "1.4";
+      }).catch((err)=>{
+        this.view = "1.ee";
       })      
     })
-  }
-  showBarcodeRes(msg: string){
-    this.resText = msg;
-    this.view = "1.3"; 
   }
 
   medImgURL: string;
   getImg(img){
     console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", img)
-    this.contentProvider.getImgURL(img).subscribe((url)=>{
+    this.contentProvider.getImgURL(img).then((url: string)=>{
       this.medImgURL = url;
       console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", url)
       this.changeView('2.3')
+    }).catch((err)=>{
+      console.log("Err",err);
     })
   }
 
@@ -147,5 +139,10 @@ export class ProcessPage {
     }else{
       this.nextSlide();
     }
+  }
+
+  focusit(val){
+    console.log(val);
+    this.purchaseFrom = val;
   }
 }
