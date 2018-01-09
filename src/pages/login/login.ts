@@ -18,7 +18,7 @@ import { Cordova } from '@ionic-native/core';
 })
 export class LoginPage {
 
-  password: string;
+  password: string = '';
   errorMsg:string;
 
   constructor( public navCtrl: NavController,
@@ -34,7 +34,7 @@ export class LoginPage {
   }
 
   navigateToProcess() {
-    if(this.password.length <= 4){
+    if(this.password.length == 4 ){
     if(this.platform.is('core') || this.platform.is('mobileweb')) {
       this.navCtrl.setRoot("ProcessPage");
     }else{
@@ -46,6 +46,9 @@ export class LoginPage {
           else{
             this.errorMsg="Wrong Password";
           }
+        }
+        else{
+          this.errorMsg="Network Error";
         }
       })  
     }
