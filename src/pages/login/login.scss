@@ -14,6 +14,9 @@ page-login {
                white-space: pre-line !important;
                color: white;
            }
+           input[type=number] {
+            -webkit-text-security: disc;
+        }
 
            ion-item{
                background: transparent !important;
@@ -45,14 +48,11 @@ page-login {
                 }
            }
        }
+
+       span{
+           color: white;
+       }
    
-//    .btnIcon{
-//        position: absolute;
-//        top: 93%;
-//        left: 86%;
-//        width: 37px;
-//    }
-  
 }
 
 ion-footer{

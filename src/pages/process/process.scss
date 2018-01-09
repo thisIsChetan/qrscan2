@@ -29,6 +29,9 @@ page-process {
                 height: 100%;
                 display: flex !important;
                 align-items: center;
+                -webkit-box-shadow: 0px 16px 46px -12px rgba(0,0,0,0.74);
+                -moz-box-shadow: 0px 16px 46px -12px rgba(0,0,0,0.74);
+                box-shadow: 0px 16px 46px -12px rgba(0,0,0,0.74);
                 ion-col{
                     color: white;
                     text-align: center;
@@ -78,23 +81,9 @@ page-process {
                 background: white !important;
                 padding: 0px !important;
                 border-radius: 5px;
-
-                // .text-input::-moz-placeholder {
-                //     color: black;
-                //     font-size: 10px;
-                //     white-space: pre-line;
-                //   }
-                  
-                //   .text-input:-ms-input-placeholder {
-                //     color: black;
-                //     font-size: 10px;
-                //     white-space: pre-line;
-                //   }
                   
                   .text-input::-webkit-input-placeholder {
                     color: black;
-          
-                    // white-space: pre-line;
                   }
              }
              ion-row{
@@ -123,6 +112,9 @@ page-process {
                 border-bottom: none !important;
                 ion-label{
                     color: white !important;
+                    span{
+                        white-space: pre-line;
+                    }
                 }   
                 ion-input{
                     background: white;
