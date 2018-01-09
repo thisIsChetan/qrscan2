@@ -43,7 +43,7 @@
           <ion-label fixed>
             <span>Hospital</span>
           </ion-label>
-          <ion-input [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('HOSPITAL')" [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
         </ion-item>
         <ion-item no-lines (tap)="purchaseFrom = 'PHARMACY'">
           <ion-avatar item-start>
@@ -52,7 +52,7 @@
           <ion-label fixed>
             <span>Pharmacy</span>
           </ion-label>
-          <ion-input [(ngModel)]="purchaseFromDetail.PHARMACY" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('PHARMACY')" [(ngModel)]="purchaseFromDetail.PHARMACY" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
         </ion-item>
         <ion-item no-lines (tap)="purchaseFrom = 'OTHER'">
           <ion-avatar item-start>
@@ -61,7 +61,7 @@
           <ion-label fixed>
             <span>Other</span>
           </ion-label>
-          <ion-input [(ngModel)]="purchaseFromDetail.OTHER" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('OTHER')" [(ngModel)]="purchaseFromDetail.OTHER" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
         </ion-item>
       </ion-list>
 
@@ -76,15 +76,24 @@
         <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '" ></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
-        <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.3')"></alert-view>
-        <!-- <alert-view [text]="'One moment…<br>System Validation In Progress…'"></alert-view> -->
+        <!-- <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.s')"></alert-view> -->
+        <alert-view [text]="'One moment…<br>System Validation In Progress…'"></alert-view>
       </section>
-      <section *ngIf="view == '1.3'">
-        <alert-view [text]="resText" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
+      <section *ngIf="view == '1.s'">
+        <alert-view [text]="'Code Validated!<br>Proceed to next step…'" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
         
       </section>
-      <section *ngIf="view == '1.4'">
-        <alert-view [text]="resText" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
+      <section *ngIf="view == '1.e'">
+        <alert-view [text]="'Product authentication failed.<br> 
+          Kindly contact numbers below to report the counterfeit product.<br>         
+          Please contact support center during normal office hours: 0809-009-369<br> 
+          Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
+        
+      </section>
+      <section *ngIf="view == '1.ee'">
+        <alert-view [text]="'System encountered some error while validating.<br> 
+          Please contact support center during normal office hours: 0809-009-369<br> 
+          Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
     </ion-slide>
 
