@@ -33,6 +33,7 @@ export class LoginPage {
   }
 
   navigateToProcess() {
+  
     if(this.password.length == 4){
 
     if((this.platform.is('core') || this.platform.is('mobileweb'))) {

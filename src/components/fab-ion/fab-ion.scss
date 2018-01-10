@@ -2,16 +2,16 @@ ion-fab {
     .fab{
         background-color: transparent;
         border-radius: 0px !important;
-        top: 30px !important;
-        width: 26px;
-        height: 28px;
+        top: 8px !important;
+        width: 32px;
+        height: 33px;
     }
     ion-fab-list {
-        margin: 69px 0;
+        margin: 36px -61px;
         position: absolute;
         background: white;
         border-radius: 5px;
-        color: black !important;
+        color: white !important;
         width: -webkit-fill-available;
         display: none;
         -webkit-box-orient: vertical;

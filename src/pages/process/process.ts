@@ -26,12 +26,18 @@ export class ProcessPage {
   verificationResult:string;
   postData:any = {}
 
+  today = new Date();
+  dd = this.today.getDate();
+  mm =this.today.getMonth()+1; 
+  yyyy = this.today.getFullYear();
+  date = this.yyyy+'-'+this.mm+'-'+this.dd;
   
   constructor( public navCtrl: NavController,
                public navParams: NavParams,
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
                private sendData: SendDataProvider) {
+                 alert(this.date);
   }
 
   ionViewDidLoad() {
@@ -54,6 +60,7 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   nextSlide(){
+    alert("next slide 1");
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
@@ -75,7 +82,7 @@ export class ProcessPage {
       //   "scanStatus": "pass",
       //   "userConclusion": "ok"
       // }
-      this.postData.scannedDate = "2018-01-04";
+      this.postData.scannedDate = "2018-01-10";
       this.postData.purchasedFrom = this.purchaseFrom;
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
       this.postData.productDose = this.packageType;
@@ -97,6 +104,7 @@ export class ProcessPage {
 
   changeView(view){
     this.view = view;
+    alert("changeview"+view);
   }
 
   buttonClick(){
@@ -107,6 +115,7 @@ export class ProcessPage {
   showBarcode(){
     this.barcode.scan().then((data:any)=>{
       this.postData.scannedCode = data.text;
+      console.log("Data is here:"+data.text);
       // this.postData.scannedDate = "2018-01-05";
       this.barcode.validate(data).then((isValid)=>{
         if(isValid){
@@ -134,6 +143,7 @@ export class ProcessPage {
   }
 
   verificationCheck(value){
+    alert("Verification");
     if(value == 'ALL'){
       this.changeView('2.5') 
     }else{

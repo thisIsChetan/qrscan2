@@ -7,7 +7,7 @@
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
     <ion-row>
-      <ion-col col-3>  Product Source </ion-col>
+      <ion-col col-3> Product Source </ion-col>
       <ion-col col-3>Code Scanner</ion-col>
       <ion-col col-3>Validate Packaging</ion-col>
       <ion-col col-3>Complete Validation</ion-col>
@@ -28,7 +28,7 @@
 
 
 <ion-content padding no-bounce>
-  
+
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <ion-list no-lines class="slide0-margin">
@@ -64,7 +64,7 @@
         </ion-item>
       </ion-list>
 
-      <div class="noticeBtn" tappable (click)="nextSlide()">
+      <div class="noticeBtn">
         Notice!
         <br>Cialis is not distributed and sold in online shops.
       </div>
@@ -72,7 +72,7 @@
 
     <ion-slide>
       <section *ngIf="view == '1.1'">
-        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '" ></alert-view>
+        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
         <!-- <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.s')"></alert-view> -->
@@ -80,14 +80,14 @@
       </section>
       <section *ngIf="view == '1.s'">
         <alert-view [text]="'Code Validated!<br>Proceed to next step…'" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
-        
+
       </section>
       <section *ngIf="view == '1.e'">
         <alert-view [text]="'Product authentication failed.<br> 
           Kindly contact numbers below to report the counterfeit product.<br>         
           Please contact support center during normal office hours: 0809-009-369<br> 
           Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
-        
+
       </section>
       <section *ngIf="view == '1.ee'">
         <alert-view [text]="'System encountered some error while validating.<br> 
@@ -122,7 +122,7 @@
           </ion-item>
         </ion-list>
         <div (click)="changeView('2.2')" class="noticeBtn" tappable>
-            Next 
+          Next
         </div>
       </section>
 
@@ -174,8 +174,8 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <div (click)="verificationCheck(verificationResult)" class="noticeBtn" tappable>
-            Next 
+        <div (click)="verificationCheck(verificationResult)" class="noticeBtn">
+          Next
         </div>
       </section>
       <section *ngIf="view == '2.5'">
@@ -186,13 +186,13 @@
 
     <ion-slide>
       <section *ngIf="view == '3.1'">
-        <alert-view [text]="'Sending data to server..'" [buttonText]="' '" ></alert-view>
+        <alert-view [text]="'Sending data to server..'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '3.s'">
-          <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '3.e'">
-        <alert-view [text]="'Validation details send Error'"  [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'Validation details send Error'" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
 
     </ion-slide>
@@ -210,6 +210,28 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-7>
+          <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="nextSlide()" *ngIf=" currentIndex == 0 ">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="changeView('2.2')" *ngIf="view == '2.1'">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="changeView('2.4')" *ngIf="view == '2.3'">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="verificationCheck(verificationResult)" *ngIf="view == '2.4'">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
 </ion-footer>
