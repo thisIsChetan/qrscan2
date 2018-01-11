@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
+import {TranslateService} from '@ngx-translate/core';
 /**
  * Generated class for the ProcessPage page.
  *
@@ -18,12 +19,13 @@ import { SendDataProvider } from '../../providers/send-data/send-data'
 export class ProcessPage {
   @ViewChild(Slides) slides: Slides;
   currentIndex:number = 0;
-  purchaseFrom:string;
+  purchaseFrom:string='';
   purchaseFromDetail: any = {};
   isImage: boolean = false;  
   view:string;
-  packageType:string;
-  verificationResult:string;
+  Exists:boolean;
+  packageType:string='';
+  verificationResult:string='';
   postData:any = {}
 
   today = new Date();
@@ -36,8 +38,10 @@ export class ProcessPage {
                public navParams: NavParams,
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
-               private sendData: SendDataProvider) {
-                 alert(this.date);
+               private sendData: SendDataProvider,
+              private translate:TranslateService) {
+                translate.setDefaultLang('en');
+                
   }
 
   ionViewDidLoad() {
@@ -60,7 +64,7 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   nextSlide(){
-    alert("next slide 1");
+    
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
@@ -82,7 +86,7 @@ export class ProcessPage {
       //   "scanStatus": "pass",
       //   "userConclusion": "ok"
       // }
-      this.postData.scannedDate = "2018-01-10";
+      this.postData.scannedDate = this.date;
       this.postData.purchasedFrom = this.purchaseFrom;
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
       this.postData.productDose = this.packageType;
@@ -104,7 +108,7 @@ export class ProcessPage {
 
   changeView(view){
     this.view = view;
-    alert("changeview"+view);
+   
   }
 
   buttonClick(){
@@ -118,6 +122,7 @@ export class ProcessPage {
       console.log("Data is here:"+data.text);
       // this.postData.scannedDate = "2018-01-05";
       this.barcode.validate(data).then((isValid)=>{
+          console.log("valid:"+isValid);
         if(isValid){
           this.view = "1.s";
         }
@@ -143,7 +148,6 @@ export class ProcessPage {
   }
 
   verificationCheck(value){
-    alert("Verification");
     if(value == 'ALL'){
       this.changeView('2.5') 
     }else{

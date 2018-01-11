@@ -1,9 +1,6 @@
 
 <ion-content padding no-bounce>
-  
-    <fab-ion></fab-ion>
-
-  <div class="container">
+  <div class="container" *ngIf="view == '1'">
 
       <ion-list no-lines>
         <ion-item>
@@ -28,14 +25,21 @@
           </form>
         </ion-grid>
       </ion-list>
-   
   </div>
-
-  
+  <section *ngIf="view == '2'">
+      <alert-view [text]="txt" [buttonText]="'OK'" (buttonClick)="reset()"></alert-view>
+    </section>
   <!-- <div class="btnIcon">
     <img src="assets/imgs/menu.png">
   </div> -->
-
+  <ion-fab right bottom >
+    <span>“選單”</span>
+      <img ion-fab src="assets/imgs/menu.png">
+      <ion-fab-list side="top">
+        <span >Terms of Use</span>
+        <span (click)="contact()">Contact information</span>
+      </ion-fab-list>
+    </ion-fab>
 </ion-content>
 
 <ion-footer no-border>

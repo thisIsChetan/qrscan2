@@ -119,6 +119,9 @@ page-process {
                 border-bottom: none !important;
                 ion-label{
                     color: white !important;
+                    span{
+                        white-space: pre-line !important;
+                    }
                 }   
                 ion-input{
                     background: white;
@@ -212,6 +215,7 @@ page-process {
                     width: 100%;
                     position: absolute;
                     font-size: 17px;
+                    top: 22%;
                     height: 100%;
                 }
 

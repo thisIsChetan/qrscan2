@@ -121,9 +121,9 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <div (click)="changeView('2.2')" class="noticeBtn" tappable>
+        <!-- <div (click)="changeView('2.2')" class="noticeBtn" tappable>
           Next
-        </div>
+        </div> -->
       </section>
 
       <section *ngIf="view == '2.2'">
@@ -136,7 +136,7 @@
           <img *ngIf="packageType == '20mg'" src="assets/imgs/pill20.png" > -->
         <img [src]="medImgURL">
 
-        <div class="noticeBtn" tappable (click)="changeView('2.4')">
+        <div class="noticeBtn" tappable >
           Notice!
           <br> Cialis is not distributed and sold in online shops.
         </div>
@@ -174,9 +174,9 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <div (click)="verificationCheck(verificationResult)" class="noticeBtn">
+        <!-- <div (click)="verificationCheck(verificationResult)" class="noticeBtn">
           Next
-        </div>
+        </div> -->
       </section>
       <section *ngIf="view == '2.5'">
         <alert-view [text]="'Authentication Passed.!<br>Product is confirmed to be distributed by Lilly Taiwan.'" [buttonText]="'OK'"
@@ -199,14 +199,14 @@
 
   </ion-slides>
 
-  <fab-ion *ngIf="view == '2.1' || view == '2.4'"></fab-ion>
+  <!-- <fab-ion *ngIf="view == '2.1' || view == '2.4'"></fab-ion> -->
   <!-- <div class="btnIcon" *ngIf="view == '2.1' || view == '2.4'">
     <img src="assets/imgs/menu.png">
   </div> -->
 </ion-content>
 
 <ion-footer *ngIf="!isKeyboardOpen" no-border>
-  <ion-item>
+  <ion-item no-lines>
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
@@ -215,11 +215,11 @@
         <ion-col col-7>
           <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
         </ion-col>
-        <ion-col class="nextBtn" (click)="nextSlide()" *ngIf=" currentIndex == 0 ">
+        <ion-col class="nextBtn" (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' " >
           <span>下一個</span>
           <div class="nextIcon"></div>
         </ion-col>
-        <ion-col class="nextBtn" (click)="changeView('2.2')" *ngIf="view == '2.1'">
+        <ion-col class="nextBtn" (click)="changeView('2.2')" *ngIf="view == '2.1' && packageType != '' ">
           <span>下一個</span>
           <div class="nextIcon"></div>
         </ion-col>
@@ -227,7 +227,7 @@
           <span>下一個</span>
           <div class="nextIcon"></div>
         </ion-col>
-        <ion-col class="nextBtn" (click)="verificationCheck(verificationResult)" *ngIf="view == '2.4'">
+        <ion-col class="nextBtn" (click)="verificationCheck(verificationResult)" *ngIf="view == '2.4' && verificationResult !=''">
           <span>下一個</span>
           <div class="nextIcon"></div>
         </ion-col>

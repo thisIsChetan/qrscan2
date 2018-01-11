@@ -4,6 +4,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Camera } from '@ionic-native/camera';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { LoginPage } from '../pages/login/login';
 
@@ -19,6 +22,11 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ContentProvider } from '../providers/content/content';
 import { SendDataProvider } from '../providers/send-data/send-data'; 
 import { HTTP } from '@ionic-native/http';
+import { ContactProvider } from '../providers/contact/contact';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -28,6 +36,14 @@ import { HTTP } from '@ionic-native/http';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }),
     HttpModule,
     IonicModule.forRoot(MyApp, {
       preloadModules: true,
@@ -56,7 +72,8 @@ import { HTTP } from '@ionic-native/http';
     ContentProvider,
     SendDataProvider,
     Keyboard,
-    HTTP
+    HTTP,
+    ContactProvider
   ]
 })
 export class AppModule { }

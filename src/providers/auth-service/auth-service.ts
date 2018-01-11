@@ -31,10 +31,7 @@ export class AuthServiceProvider {
   // }
   isValid(credentials){
 
-    return new Promise((resolve, reject)=>{
-
-
-      
+    return new Promise((resolve, reject)=>{      
       let headers = {
       };
       let data = {
