@@ -7,10 +7,10 @@
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
     <ion-row>
-      <ion-col col-3> Product Source </ion-col>
-      <ion-col col-3>Code Scanner</ion-col>
-      <ion-col col-3>Validate Packaging</ion-col>
-      <ion-col col-3>Complete Validation</ion-col>
+      <ion-col col-3> 產品來源</ion-col>
+      <ion-col col-3>掃描Code</ion-col>
+      <ion-col col-3>核對包裝</ion-col>
+      <ion-col col-3>完成查詢</ion-col>
     </ion-row>
   </ion-grid>
   <ion-navbar *ngIf="view == '2.3'">
@@ -35,6 +35,7 @@
         <ion-list-header no-lines>
           Cialis purchased from :
         </ion-list-header>
+        
         <ion-item no-lines (tap)="purchaseFrom = 'HOSPITAL'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'HOSPITAL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
@@ -62,6 +63,7 @@
           </ion-label>
           <ion-input (focus)="focusit('OTHER')" [(ngModel)]="purchaseFromDetail.OTHER" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
         </ion-item>
+        
       </ion-list>
 
       <div class="noticeBtn">
@@ -132,10 +134,9 @@
       </section>
 
       <section *ngIf="view == '2.3'">
-        <!-- <img *ngIf="packageType == '5mg'" src="assets/imgs/pill5.png" >
-          <img *ngIf="packageType == '20mg'" src="assets/imgs/pill20.png" > -->
+        <div class="medImg">
         <img [src]="medImgURL">
-
+          </div>
         <div class="noticeBtn" tappable >
           Notice!
           <br> Cialis is not distributed and sold in online shops.
@@ -178,9 +179,14 @@
           Next
         </div> -->
       </section>
+      <section *ngIf="view == '2.6'">
+          <alert-view [text]="'Please contact the call center during working hours to help you validate the product. 
+          <br>0809-009-369</br>'" [buttonText]="'OK'"
+            (buttonClick)="this.nextSlide()"></alert-view>
+        </section>
       <section *ngIf="view == '2.5'">
         <alert-view [text]="'Authentication Passed.!<br>Product is confirmed to be distributed by Lilly Taiwan.'" [buttonText]="'OK'"
-          (buttonClick)="this.nextSlide();"></alert-view>
+          (buttonClick)="this.nextSlide()"></alert-view>
       </section>
     </ion-slide>
 
@@ -199,6 +205,14 @@
 
   </ion-slides>
 
+  <!-- <ion-fab right bottom >
+      <span style="color:white;">選單</span>
+        <img ion-fab src="assets/imgs/menu.png">
+        <ion-fab-list side="top">
+          <span >Terms of Use</span>
+          <span (click)="contact()">Contact information</span>
+        </ion-fab-list>
+      </ion-fab> -->
   <!-- <fab-ion *ngIf="view == '2.1' || view == '2.4'"></fab-ion> -->
   <!-- <div class="btnIcon" *ngIf="view == '2.1' || view == '2.4'">
     <img src="assets/imgs/menu.png">

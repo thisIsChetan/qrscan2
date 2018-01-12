@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { Camera } from '@ionic-native/camera';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -24,8 +25,8 @@ import { SendDataProvider } from '../providers/send-data/send-data';
 import { HTTP } from '@ionic-native/http';
 import { ContactProvider } from '../providers/contact/contact';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -40,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
+          useFactory: createTranslateLoader,
           deps: [HttpClient]
       }
   }),

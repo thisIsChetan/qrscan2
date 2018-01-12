@@ -21,7 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="red" />
+    <preference name="StatusBarBackgroundColor" value="#ff0000 " />
     <preference name="DisallowOverscroll" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
@@ -92,5 +92,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
     <engine name="android" spec="^6.3.0" />
-    <engine name="ios" spec="~4.5.4" />
+    <engine name="ios" spec="^4.5.4" />
 </widget>

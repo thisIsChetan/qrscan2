@@ -65,6 +65,12 @@ page-process {
                 .mar-top{
                     margin-top: 10%;
                 }
+                .medImg{
+                   
+                    height: 387px;
+                    width: 100%;
+                }
+
             }
             ion-list-header{
                 background: transparent !important;
@@ -175,6 +181,46 @@ page-process {
             color: white;
            }
         }
+
+       .fab{
+        background-color: transparent;
+        border-radius: 0px !important;
+        top: 8px !important;
+        width: 32px;
+        height: 33px;
+        
+    }
+    ion-fab-list {
+        margin: 36px -61px;
+        position: absolute;
+        background: white;
+        border-radius: 5px;
+        color: white !important;
+        width: -webkit-fill-available;
+        display: none;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 100px;
+
+        span{
+            color: white !important;
+            text-align: center;
+        }
+        .fab-in-list{
+            width: auto !important;
+            color: black;
+        }
+        .fab-in-list.show{
+            background: transparent;
+        }
+    }
     }
 
     body.keyboard-open .has-footer{	

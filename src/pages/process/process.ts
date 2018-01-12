@@ -23,7 +23,12 @@ export class ProcessPage {
   purchaseFromDetail: any = {};
   isImage: boolean = false;  
   view:string;
-  Exists:boolean;
+  isData={
+    'Exists': '' ,
+    'Frequency_exceeded': ''
+  }
+  
+ // Exists:boolean;
   packageType:string='';
   verificationResult:string='';
   postData:any = {}
@@ -77,15 +82,7 @@ export class ProcessPage {
       this.view = "2.1";
     }else if(_currentIndex == 3){
       this.view = '3.1';
-      // this.postData = {
-      //   "scannedCode": "0104711928261089211989187206841719010110A17080305",
-      //   "scannedDate": "2018-01-04",
-      //   "purchasedFrom": "Hospital",
-      //   "purchasedName": "rep",
-      //   "productDose": "5 mg",
-      //   "scanStatus": "pass",
-      //   "userConclusion": "ok"
-      // }
+      
       this.postData.scannedDate = this.date;
       this.postData.purchasedFrom = this.purchaseFrom;
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
@@ -150,10 +147,16 @@ export class ProcessPage {
   verificationCheck(value){
     if(value == 'ALL'){
       this.changeView('2.5') 
-    }else{
+    }
+    else if(value == 'SOME' || value == 'NOT_SURE'){
+      this.changeView('2.6') 
+    }
+    else{
       this.nextSlide();
     }
   }
+  
+ 
 
   focusit(val){
     console.log(val);
