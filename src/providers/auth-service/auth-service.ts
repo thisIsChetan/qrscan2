@@ -31,8 +31,9 @@ export class AuthServiceProvider {
   // }
   isValid(credentials){
 
-    return new Promise((resolve, reject)=>{
-      let headers = {};
+    return new Promise((resolve, reject)=>{      
+      let headers = {
+      };
       let data = {
         app_authentication_code: credentials
       }
@@ -40,6 +41,8 @@ export class AuthServiceProvider {
       this.http.setDataSerializer("json");
       this.http.setHeader("Accept", "application/json");
       this.http.setHeader("Content-Type", "application/json");
+      // this.http.getBasicAuthHeader(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
+      this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
       this.http.post(GLOBALS.AUTH_URL, data, headers).then((res)=>{
         console.log(res);
         // alert(JSON.stringify(data.data));

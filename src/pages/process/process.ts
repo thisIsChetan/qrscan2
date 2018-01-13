@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
+import {TranslateService} from '@ngx-translate/core';
 /**
  * Generated class for the ProcessPage page.
  *
@@ -18,20 +19,34 @@ import { SendDataProvider } from '../../providers/send-data/send-data'
 export class ProcessPage {
   @ViewChild(Slides) slides: Slides;
   currentIndex:number = 0;
-  purchaseFrom:string;
+  purchaseFrom:string='';
   purchaseFromDetail: any = {};
   isImage: boolean = false;  
   view:string;
-  packageType:string;
-  verificationResult:string;
+  isData={
+    'Exists': '' ,
+    'Frequency_exceeded': ''
+  }
+  
+ // Exists:boolean;
+  packageType:string='';
+  verificationResult:string='';
   postData:any = {}
 
+  today = new Date();
+  dd = this.today.getDate();
+  mm =this.today.getMonth()+1; 
+  yyyy = this.today.getFullYear();
+  date = this.yyyy+'-'+this.mm+'-'+this.dd;
   
   constructor( public navCtrl: NavController,
                public navParams: NavParams,
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
-               private sendData: SendDataProvider) {
+               private sendData: SendDataProvider,
+              private translate:TranslateService) {
+                translate.setDefaultLang('en');
+                
   }
 
   ionViewDidLoad() {
@@ -54,6 +69,7 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   nextSlide(){
+    
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
@@ -66,16 +82,8 @@ export class ProcessPage {
       this.view = "2.1";
     }else if(_currentIndex == 3){
       this.view = '3.1';
-      // this.postData = {
-      //   "scannedCode": "0104711928261089211989187206841719010110A17080305",
-      //   "scannedDate": "2018-01-04",
-      //   "purchasedFrom": "Hospital",
-      //   "purchasedName": "rep",
-      //   "productDose": "5 mg",
-      //   "scanStatus": "pass",
-      //   "userConclusion": "ok"
-      // }
-      this.postData.scannedDate = "2018-01-04";
+      
+      this.postData.scannedDate = this.date;
       this.postData.purchasedFrom = this.purchaseFrom;
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
       this.postData.productDose = this.packageType;
@@ -97,6 +105,7 @@ export class ProcessPage {
 
   changeView(view){
     this.view = view;
+   
   }
 
   buttonClick(){
@@ -107,8 +116,10 @@ export class ProcessPage {
   showBarcode(){
     this.barcode.scan().then((data:any)=>{
       this.postData.scannedCode = data.text;
+      console.log("Data is here:"+data.text);
       // this.postData.scannedDate = "2018-01-05";
       this.barcode.validate(data).then((isValid)=>{
+          console.log("valid:"+isValid);
         if(isValid){
           this.view = "1.s";
         }
@@ -136,10 +147,16 @@ export class ProcessPage {
   verificationCheck(value){
     if(value == 'ALL'){
       this.changeView('2.5') 
-    }else{
+    }
+    else if(value == 'SOME' || value == 'NOT_SURE'){
+      this.changeView('2.6') 
+    }
+    else{
       this.nextSlide();
     }
   }
+  
+ 
 
   focusit(val){
     console.log(val);

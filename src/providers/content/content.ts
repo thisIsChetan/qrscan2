@@ -37,6 +37,7 @@ export class ContentProvider {
         this.http.setDataSerializer("json");
         this.http.setHeader("Accept", "application/json");
         this.http.setHeader("Content-Type", "application/json");
+        this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
         this.http.get(url,{}, headers).then((res)=>{
           console.log(res);
           let data = JSON.parse(res.data); 

@@ -6,13 +6,11 @@
 -->
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
-
-
     <ion-row>
-      <ion-col col-3>Product Source</ion-col>
-      <ion-col col-3>Code Scanner</ion-col>
-      <ion-col col-3>Validate Packaging</ion-col>
-      <ion-col col-3>Complete Validation</ion-col>
+      <ion-col col-3> 產品來源</ion-col>
+      <ion-col col-3>掃描Code</ion-col>
+      <ion-col col-3>核對包裝</ion-col>
+      <ion-col col-3>完成查詢</ion-col>
     </ion-row>
   </ion-grid>
   <ion-navbar *ngIf="view == '2.3'">
@@ -30,12 +28,14 @@
 
 
 <ion-content padding no-bounce>
+
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <ion-list no-lines class="slide0-margin">
         <ion-list-header no-lines>
           Cialis purchased from :
         </ion-list-header>
+        
         <ion-item no-lines (tap)="purchaseFrom = 'HOSPITAL'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'HOSPITAL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
@@ -63,9 +63,10 @@
           </ion-label>
           <ion-input (focus)="focusit('OTHER')" [(ngModel)]="purchaseFromDetail.OTHER" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
         </ion-item>
+        
       </ion-list>
 
-      <div class="noticeBtn" tappable (click)="nextSlide()">
+      <div class="noticeBtn">
         Notice!
         <br>Cialis is not distributed and sold in online shops.
       </div>
@@ -73,7 +74,7 @@
 
     <ion-slide>
       <section *ngIf="view == '1.1'">
-        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '" ></alert-view>
+        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
         <!-- <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.s')"></alert-view> -->
@@ -81,14 +82,14 @@
       </section>
       <section *ngIf="view == '1.s'">
         <alert-view [text]="'Code Validated!<br>Proceed to next step…'" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
-        
+
       </section>
       <section *ngIf="view == '1.e'">
         <alert-view [text]="'Product authentication failed.<br> 
           Kindly contact numbers below to report the counterfeit product.<br>         
           Please contact support center during normal office hours: 0809-009-369<br> 
           Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
-        
+
       </section>
       <section *ngIf="view == '1.ee'">
         <alert-view [text]="'System encountered some error while validating.<br> 
@@ -122,9 +123,9 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <div (click)="changeView('2.2')" class="noticeBtn" tappable>
-            Next 
-        </div>
+        <!-- <div (click)="changeView('2.2')" class="noticeBtn" tappable>
+          Next
+        </div> -->
       </section>
 
       <section *ngIf="view == '2.2'">
@@ -133,11 +134,10 @@
       </section>
 
       <section *ngIf="view == '2.3'">
-        <!-- <img *ngIf="packageType == '5mg'" src="assets/imgs/pill5.png" >
-          <img *ngIf="packageType == '20mg'" src="assets/imgs/pill20.png" > -->
+        <div class="medImg">
         <img [src]="medImgURL">
-
-        <div class="noticeBtn" tappable (click)="changeView('2.4')">
+          </div>
+        <div class="noticeBtn" tappable >
           Notice!
           <br> Cialis is not distributed and sold in online shops.
         </div>
@@ -175,42 +175,77 @@
             </ion-label>
           </ion-item>
         </ion-list>
-        <div (click)="verificationCheck(verificationResult)" class="noticeBtn" tappable>
-            Next 
-        </div>
+        <!-- <div (click)="verificationCheck(verificationResult)" class="noticeBtn">
+          Next
+        </div> -->
       </section>
+      <section *ngIf="view == '2.6'">
+          <alert-view [text]="'Please contact the call center during working hours to help you validate the product. 
+          <br>0809-009-369</br>'" [buttonText]="'OK'"
+            (buttonClick)="this.nextSlide()"></alert-view>
+        </section>
       <section *ngIf="view == '2.5'">
         <alert-view [text]="'Authentication Passed.!<br>Product is confirmed to be distributed by Lilly Taiwan.'" [buttonText]="'OK'"
-          (buttonClick)="this.nextSlide();"></alert-view>
+          (buttonClick)="this.nextSlide()"></alert-view>
       </section>
     </ion-slide>
 
     <ion-slide>
       <section *ngIf="view == '3.1'">
-        <alert-view [text]="'Sending data to server..'" [buttonText]="' '" ></alert-view>
+        <alert-view [text]="'Sending data to server..'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '3.s'">
-          <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '3.e'">
-        <alert-view [text]="'Validation details send Error'"  [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'Validation details send Error'" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
       </section>
 
     </ion-slide>
 
   </ion-slides>
 
-  <fab-ion *ngIf="view == '2.1' || view == '2.4'"></fab-ion>
+  <!-- <ion-fab right bottom >
+      <span style="color:white;">選單</span>
+        <img ion-fab src="assets/imgs/menu.png">
+        <ion-fab-list side="top">
+          <span >Terms of Use</span>
+          <span (click)="contact()">Contact information</span>
+        </ion-fab-list>
+      </ion-fab> -->
+  <!-- <fab-ion *ngIf="view == '2.1' || view == '2.4'"></fab-ion> -->
   <!-- <div class="btnIcon" *ngIf="view == '2.1' || view == '2.4'">
     <img src="assets/imgs/menu.png">
   </div> -->
 </ion-content>
 
 <ion-footer *ngIf="!isKeyboardOpen" no-border>
-  <ion-item>
+  <ion-item no-lines>
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-7>
+          <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' " >
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="changeView('2.2')" *ngIf="view == '2.1' && packageType != '' ">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="changeView('2.4')" *ngIf="view == '2.3'">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+        <ion-col class="nextBtn" (click)="verificationCheck(verificationResult)" *ngIf="view == '2.4' && verificationResult !=''">
+          <span>下一個</span>
+          <div class="nextIcon"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-item>
 </ion-footer>
