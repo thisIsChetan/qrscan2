@@ -18,12 +18,6 @@ ion-content{
     background:url("../assets/imgs/bg.png");
     background-size: contain;
 }
-// ion-footer{
-//     z-index: 1 !important;
-// }
-// ion-content{
-//     z-index: 2 !important;
-// }
 
 .red-button{
     background: url(../assets/imgs/popup-button-bg.png);
@@ -37,3 +31,96 @@ ion-content{
 body.keyboard-is-open ion-footer {
     display: none;
   }
+
+  ion-fab {
+    background-size: cover;
+    bottom: 0px !important; 
+
+  .fab{
+    background-color: transparent;
+    border-radius: 0px !important;
+    top: 8px !important;
+    width: 32px;
+    height: 33px;
+}
+ion-fab-list {
+    margin: 47px -61px !important;
+    position: absolute;
+    border-radius: 5px;
+    color: white !important;
+    width: -webkit-fill-available;
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100px;
+
+    span{
+        color: color !important;
+        text-align: center;
+    }
+    .fab-in-list{
+        width: auto !important;
+        color: black;
+    }
+    .fab-in-list.show{
+        background: transparent;
+    }
+}
+.fab-md {
+     box-shadow: none !important;
+ }
+}
+
+
+ion-footer{
+    background: transparent !important;
+    height: 65px;
+    color: white !important;
+    ion-item{
+        background: transparent !important;   
+        ion-thumbnail{
+            min-width: 80px !important;
+            min-height: 0px !important;
+            img{
+                width: 80px !important;
+                height: auto !important;
+            }
+        }
+        p{
+            color: white !important;
+            white-space: normal;
+            font-weight: bold;
+            width: 64%;
+            font-size: 9px !important;
+        }
+    }
+    .button{
+        background: url(../assets/imgs/next-bg.png);
+        height: 35px !important;
+        width: 70px !important;
+        background-size: 100% 100%;
+        margin: 0px !important;
+
+        span{
+            width:71% !important;
+            color: black;
+            margin-right: 45% !important;
+        }
+        .nextIcon{
+            background: url(../assets/imgs/next-icon.png);
+            background-size: 100% 100%;
+            height: 79%;
+            position: absolute;
+            width: 34%;
+            left: 65%;
+        }
+    }
+    
+}

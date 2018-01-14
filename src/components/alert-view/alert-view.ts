@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter,ViewChild } from '@angular/core';
 
 /**
  * Generated class for the AlertViewComponent component.
@@ -11,8 +11,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'alert-view.html'
 })
 export class AlertViewComponent {
-
+ 
   @Input('text') text: string;
+  @Input('contentText') contentText: string='';
   @Input('buttonText') buttonText: string;
   @Output() buttonClick = new EventEmitter();
   constructor() {

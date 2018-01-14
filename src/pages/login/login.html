@@ -1,52 +1,73 @@
-
 <ion-content padding no-bounce>
-  <div class="container" *ngIf="view == '1'">
 
-      <ion-list no-lines>
-        <ion-item>
-          <ion-label>
-            Please enter the Activation Code provided by the HCPs to start using the App:
-          </ion-label>
-        </ion-item>
+  <ion-slides  (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
+    <ion-slide>
+      <div class="slide0-margin" class="container" *ngIf="view == '1'">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label>
+              Please enter the Activation Code provided by the HCPs to start using the App:
+            </ion-label>
+          </ion-item>
 
-        <ion-grid>
-          <form >
-          <ion-row>
-            <ion-col col-10>
-              <ion-input class="text-input" (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput type="number" pattern="[0-9]*" placeholder="Access PIN/Passcode" name="pass" required></ion-input>
-            </ion-col>
-            <ion-col col-2 class="searchBtn">
-              <button ion-button clear small float-right (click)="navigateToProcess()" [disabled]="password === ''">
-                  <ion-icon name="search"></ion-icon>
-              </button>
-            </ion-col>
-          </ion-row>
-          <span *ngIf="errorMsg">{{errorMsg}}</span>
-          </form>
-        </ion-grid>
-      </ion-list>
-  </div>
-  <section *ngIf="view == '2'">
-      <alert-view [text]="txt" [buttonText]="'OK'" (buttonClick)="reset()"></alert-view>
-    </section>
-  <!-- <div class="btnIcon">
-    <img src="assets/imgs/menu.png">
-  </div> -->
-  <ion-fab right bottom >
+          <ion-grid>
+            <form>
+              <ion-row>
+                <ion-col col-10>
+                  <ion-input class="text-input" (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput type="number" pattern="[0-9]*"
+                    placeholder="Access PIN/Passcode" name="pass" required></ion-input>
+                </ion-col>
+                <ion-col col-2 class="searchBtn">
+                  <button ion-button clear small float-right (click)="navigateToNote()" [disabled]="password === ''">
+                    <ion-icon name="search"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+              <span *ngIf="errorMsg">{{errorMsg}}</span>
+            </form>
+          </ion-grid>
+        </ion-list>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <section >
+        <alert-view [text]="notice"   [buttonText]="'OK'" (buttonClick)="nextTerms()">
+        </alert-view>
+      </section>
+    </ion-slide>
+    <ion-slide class="terms">
+     <section >
+        <alert-view [text]="termsOfUse " [buttonText]="'OK'" (buttonClick)="navigateToProcess()">
+        </alert-view>
+      </section>
+    </ion-slide>
+
+  </ion-slides>
+
+  <section *ngIf="view == '2' && this.currentIndex == 0">
+    <alert-view [text]="txt" [buttonText]="'OK'" (buttonClick)="reset()"></alert-view>
+  </section>
+
+  <ion-fab right bottom #fab *ngIf="currentIndex == 0">
     <span>選單</span>
-      <img ion-fab src="assets/imgs/menu.png">
-      <ion-fab-list side="top">
-        <span >Terms of Use</span>
-        <span (click)="contact()">Contact information</span>
-      </ion-fab-list>
-    </ion-fab>
+    <img ion-fab src="assets/imgs/menu.png">
+    <ion-fab-list side="top">
+      <button ion-fab (click)="privacy(fab)">
+        <ion-label>Privacy content</ion-label>
+      </button>
+      <button ion-fab (click)="terms(fab)">
+        <ion-label>Terms of Use</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
 
 <ion-footer no-border>
-  <ion-item>
+  <ion-item no-lines>
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> 聯絡我們\n歡迎您寶貴的意見, 禮來公司關心您的健康。台北市復興北路365號11樓\n電話： (02)27152950</p>
+    <p> 台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950</p>
   </ion-item>
 </ion-footer>

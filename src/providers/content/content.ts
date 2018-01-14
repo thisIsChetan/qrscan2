@@ -24,13 +24,6 @@ export class ContentProvider {
       url = GLOBALS.IMG_URL_5mg;
     }
     console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", url)
-      // return this.http.get(GLOBALS.IMG_URL)
-      // .map((res:any) =>{
-      //   console.log(res);
-      //   res = res.json();
-      //   return "https:" + res.includes.Asset[idx].fields.file.url;
-      // })
-
       return new Promise((resolve, reject)=>{
 
         let headers = {};
