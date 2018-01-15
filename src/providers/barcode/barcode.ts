@@ -63,34 +63,34 @@ export class BarcodeProvider {
   // }
 
   validate(barcodeData){
-    return true;
-    // return new Promise((resolve, reject)=>{
+   // return true;
+    return new Promise((resolve, reject)=>{
 
-    //   console.log("Barcode Scanned", barcodeData);
+      console.log("Barcode Scanned", barcodeData);
      
-    //   let headers = {};
-    //   let data = {          
-    //       "product_code": barcodeData.text
-    //   }
+      let headers = {};
+      let data = {          
+          "product_code": barcodeData.text
+      }
   
-    //   this.http.setDataSerializer("json");
-    //   this.http.setHeader("Accept", "application/json");
-    //   this.http.setHeader("Content-Type", "application/json");
-    //   this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
-    //   this.http.post(GLOBALS.BARCODE_URL, data, headers).then((res: any)=>{
-    //     console.log("ExistsData:"+JSON.parse(res.data).Frequency_exceeded);
-    //     if(JSON.parse(res.data).Exists == JSON.parse(res.data).Frequency_exceeded){
-    //       resolve(true);
-    //     }
-    //     else{
-    //       resolve(false);
-    //     }
+      this.http.setDataSerializer("json");
+      this.http.setHeader("Accept", "application/json");
+      this.http.setHeader("Content-Type", "application/json");
+      this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
+      this.http.post(GLOBALS.BARCODE_URL, data, headers).then((res: any)=>{
+        console.log("ExistsData:"+JSON.parse(res.data).Frequency_exceeded);
+        if(JSON.parse(res.data).Exists == JSON.parse(res.data).Frequency_exceeded){
+          resolve(true);
+        }
+        else{
+          resolve(false);
+        }
        
-    //   }).catch((err)=>{
-    //     console.log("Error MSG:"+err);
-    //     reject(err);
-    //   })
-    // })
+      }).catch((err)=>{
+        console.log("Error MSG:"+err);
+        reject(err);
+      })
+    })
   }
 
 
