@@ -4,6 +4,7 @@ import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
 import {TranslateService} from '@ngx-translate/core';
+import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 /**
  * Generated class for the ProcessPage page.
  *
@@ -44,7 +45,8 @@ export class ProcessPage {
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
                private sendData: SendDataProvider,
-              private translate:TranslateService) {
+               private translate:TranslateService,
+               private fabButton: FabButtonProvider ) {
                 translate.setDefaultLang('en');
                 
   }

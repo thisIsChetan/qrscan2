@@ -70,7 +70,8 @@ ion-fab-list {
         color: black;
     }
     .fab-in-list.show{
-        background: transparent;
+        background: gray;
+        border-radius: 20px !important;
     }
 }
 .fab-md {
