@@ -4,8 +4,9 @@ import { IonicPage, NavController, NavParams, Platform, Slides, FabContainer } f
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ContactProvider } from "../../providers/contact/contact";
 import { TermsOfUseProvider } from "../../providers/terms-of-use/terms-of-use";
-import { TranslateService } from '@ngx-translate/core';
-/**
+import { FabButtonProvider } from "../../providers/fab-button/fab-button"
+
+
  * Generated class for the LoginPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -36,8 +37,7 @@ export class LoginPage {
     public contactProvider: ContactProvider,
     public termsOfUseProvide: TermsOfUseProvider,
     private platform: Platform,
-    translate: TranslateService) {
-      translate.setDefaultLang('en');
+    private fabButton: FabButtonProvider) {
     this.view = '1';
   }
 

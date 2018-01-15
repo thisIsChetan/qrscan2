@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
-
+import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 /**
  * Generated class for the ProcessPage page.
  *
@@ -40,9 +40,10 @@ export class ProcessPage {
                public navParams: NavParams,
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
-               private sendData: SendDataProvider) {
-               
-              
+               private sendData: SendDataProvider,
+               private translate:TranslateService,
+               private fabButton: FabButtonProvider ) {
+ 
                 
   }
 

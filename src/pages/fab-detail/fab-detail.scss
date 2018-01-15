@@ -1,0 +1,38 @@
+page-fab-detail {
+    ion-content{
+        .sec-contain{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction:column;
+            width: 100% !important;
+            height: 100% !important;
+            section{
+                background: url(../assets/imgs/white-bg.png);
+                background-size: 100% 100%;
+                width: 100%;
+                min-height: 30%;
+                max-height: 100%;
+                padding: 10px;
+                color: black;
+                font-size: 16px;
+                overflow: scroll;
+            }
+        }
+
+    }
+    ion-footer{
+        div{
+            background: url(../assets/imgs/button-bg.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 64%;
+            padding: 6px;
+            color: white;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+    }
+    
+}

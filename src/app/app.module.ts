@@ -7,7 +7,9 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
+
 import {TranslateModule, TranslateLoader , TranslateService} from '@ngx-translate/core';
+
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { LoginPage } from '../pages/login/login';
@@ -27,6 +29,7 @@ import { SendDataProvider } from '../providers/send-data/send-data';
 import { HTTP } from '@ionic-native/http';
 import { ContactProvider } from '../providers/contact/contact';
 import { TermsOfUseProvider } from '../providers/terms-of-use/terms-of-use';
+import { FabButtonProvider } from '../providers/fab-button/fab-button';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -81,11 +84,14 @@ export function createTranslateLoader(http: HttpClient) {
     GoogleAnalytics,
     HTTP,
     ContactProvider,
-    TermsOfUseProvider
+    TermsOfUseProvider,
+    FabButtonProvider
   ]
 })
+
 export class AppModule { 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
 }
 }
+
