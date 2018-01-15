@@ -63,6 +63,7 @@ export class BarcodeProvider {
   // }
 
   validate(barcodeData){
+   // return true;
     return new Promise((resolve, reject)=>{
 
       console.log("Barcode Scanned", barcodeData);

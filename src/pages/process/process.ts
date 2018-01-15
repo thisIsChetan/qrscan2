@@ -60,23 +60,25 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   resetValidation(){
+    alert(this.purchaseFromDetail.HOSPITAL);
     this.purchaseFrom = "";
     this.packageType = "";
     this.verificationResult = "";
-    this.purchaseFromDetail = {};
+    this.purchaseFromDetail.HOSPITAL="";
+   // this.purchaseFromDetail[this.purchaseFrom];
+    this.purchaseFromDetail = [];
     this.slides.lockSwipes(false);
     this.slides.slideTo(0);
     this.slides.lockSwipes(true);
   }
   nextSlide(){
-    
+   
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
     let _currentIndex = this.slides.getActiveIndex();
     if(_currentIndex == 1){
       this.view = '1.1';
-      //this.barcode.showAlert();
        this.showBarcode();
     }else if(_currentIndex == 2){
       this.view = "2.1";
@@ -114,22 +116,7 @@ export class ProcessPage {
   //Slide 1
 
   showBarcode(){
-    this.barcode.scan().then((data:any)=>{
-      this.postData.scannedCode = data.text;
-      console.log("Data is here:"+data.text);
-      // this.postData.scannedDate = "2018-01-05";
-      this.barcode.validate(data).then((isValid)=>{
-          console.log("valid:"+isValid);
-        if(isValid){
-          this.view = "1.s";
-        }
-        else{
-          this.view = "1.e";
-        }
-      }).catch((err)=>{
-        this.view = "1.ee";
-      })      
-    })
+    this.view = "1.s";
   }
 
   medImgURL: string;
