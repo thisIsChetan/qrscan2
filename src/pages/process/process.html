@@ -35,6 +35,7 @@
         
         <ion-list-header no-lines class="headFirst" >
             犀利士取得來源:
+            {{ 'HELLO' | translate }}
         </ion-list-header>
 
         <ion-item no-lines (tap)="purchaseFrom = 'HOSPITAL'">
@@ -202,12 +203,16 @@
 
   </ion-slides>
 
-  <ion-fab right bottom>
-      <span>選單</span>
-      <img ion-fab src="assets/imgs/menu.png">
+  <ion-fab right bottom #fab>
+    <span>選單</span>
+    <img ion-fab src="assets/imgs/menu.png">
     <ion-fab-list side="top">
-      <button ion-fab><ion-label>Privacy content</ion-label></button>
-      <button ion-fab><ion-label>Terms of Use</ion-label></button>
+      <button ion-fab (click)="fabButton.showPrivacy(fab)">
+        <ion-label>Privacy content</ion-label>
+      </button>
+      <button ion-fab (click)="fabButton.showContact(fab)">
+        <ion-label>Contact info</ion-label>
+      </button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

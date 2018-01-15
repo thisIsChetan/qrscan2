@@ -6,6 +6,7 @@
         <ion-list no-lines>
           <ion-item>
             <ion-label>
+              
               Please enter the Activation Code provided by the HCPs to start using the App:
             </ion-label>
           </ion-item>
@@ -53,11 +54,11 @@
     <span>選單</span>
     <img ion-fab src="assets/imgs/menu.png">
     <ion-fab-list side="top">
-      <button ion-fab (click)="privacy(fab)">
+      <button ion-fab (click)="fabButton.showPrivacy(fab)">
         <ion-label>Privacy content</ion-label>
       </button>
-      <button ion-fab (click)="terms(fab)">
-        <ion-label>Terms of Use</ion-label>
+      <button ion-fab (click)="fabButton.showContact(fab)">
+        <ion-label>Contact info</ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>
