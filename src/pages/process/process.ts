@@ -41,7 +41,6 @@ export class ProcessPage {
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
                private sendData: SendDataProvider,
-               private translate:TranslateService,
                private fabButton: FabButtonProvider ) {
  
                 
