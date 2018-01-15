@@ -6,7 +6,7 @@
         <ion-list no-lines>
           <ion-item>
             <ion-label>
-              Please enter the Activation Code provided by the HCPs to start using the App:
+                {{ "LOGINPAGE.LABEL" | translate }}
             </ion-label>
           </ion-item>
 
@@ -32,7 +32,7 @@
 
     <ion-slide>
       <section >
-        <alert-view [text]="notice"   [buttonText]="'OK'" (buttonClick)="nextTerms()">
+        <alert-view [text]=" 'NOTICE.MSG' | translate"   [buttonText]="'OK'" (buttonClick)="nextTerms()">
         </alert-view>
       </section>
     </ion-slide>
@@ -50,14 +50,14 @@
   </section>
 
   <ion-fab right bottom #fab *ngIf="currentIndex == 0">
-    <span>選單</span>
+    <span> {{ "FABMENU.LABEL" | translate }} </span>
     <img ion-fab src="assets/imgs/menu.png">
     <ion-fab-list side="top">
       <button ion-fab (click)="privacy(fab)">
         <ion-label>Privacy content</ion-label>
       </button>
       <button ion-fab (click)="terms(fab)">
-        <ion-label>Terms of Use</ion-label>
+        <ion-label>Contact information</ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>
@@ -68,6 +68,6 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> 台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950</p>
+    <p>  {{ "FOOTER.ADDRESS" | translate }} </p>
   </ion-item>
 </ion-footer>

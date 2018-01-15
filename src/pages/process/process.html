@@ -7,10 +7,10 @@
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
     <ion-row>
-      <ion-col col-3> 產品來源</ion-col>
-      <ion-col col-3>掃描Code</ion-col>
-      <ion-col col-3>核對包裝</ion-col>
-      <ion-col col-3>完成查詢</ion-col>
+      <ion-col col-3> {{ "PROCESS.PRODUCT_SOURCE" | translate }}  </ion-col>
+      <ion-col col-3> {{ "PROCESS.CODE_SCANNER" | translate }} </ion-col>
+      <ion-col col-3>{{ "PROCESS.VALIDATE_PACKAGEING" | translate }}</ion-col>
+      <ion-col col-3>{{ "PROCESS.COMPLETE_VALIDATEION" | translate }}</ion-col>
     </ion-row>
   </ion-grid>
   <ion-navbar *ngIf="view == '2.3'">
@@ -20,8 +20,8 @@
       </button>
     </ion-buttons>
     <ion-title>
-      <span *ngIf="packageType == '5mg'">Cialis 5mg Package Authentication Guide</span>
-      <span *ngIf="packageType == '20mg'">Cialis 20mg Package Authentication Guide</span>
+      <span *ngIf="packageType == '5mg'">{{ "PROCESS.5MG_GUIDE" | translate }}</span>
+      <span *ngIf="packageType == '20mg'">{{ "PROCESS.20MG_GUIDE" | translate }}</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -34,7 +34,7 @@
       <ion-list no-lines class="slide0-margin">
         
         <ion-list-header no-lines class="headFirst" >
-            犀利士取得來源:
+            {{ "PROCESS.LABEL_SLIDE0" | translate }}
         </ion-list-header>
 
         <ion-item no-lines (tap)="purchaseFrom = 'HOSPITAL'">
@@ -42,34 +42,33 @@
             <img [src]="purchaseFrom == 'HOSPITAL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
           </ion-avatar>
           <ion-label fixed>
-            <span>Hospital</span>
+            <span>{{ "PROCESS.HOSPITAL" | translate }}</span>
           </ion-label>
-          <ion-input (focus)="focusit('HOSPITAL')" [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('HOSPITAL')" [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" [placeholder]=" 'PROCESS.INPUT_PLACEHOLDER' | translate "></ion-input>
         </ion-item>
         <ion-item no-lines (tap)="purchaseFrom = 'PHARMACY'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'PHARMACY' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
           </ion-avatar>
           <ion-label fixed>
-            <span>Pharmacy</span>
+            <span>{{ "PROCESS.PHARMACY" | translate }}</span>
           </ion-label>
-          <ion-input (focus)="focusit('PHARMACY')" [(ngModel)]="purchaseFromDetail.PHARMACY" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('PHARMACY')" [(ngModel)]="purchaseFromDetail.PHARMACY" type="text" [placeholder]=" 'PROCESS.INPUT_PLACEHOLDER' | translate"></ion-input>
         </ion-item>
         <ion-item no-lines (tap)="purchaseFrom = 'OTHER'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'OTHER' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
           </ion-avatar>
           <ion-label fixed>
-            <span>Other</span>
+            <span>{{ "PROCESS.OTHER" | translate }}</span>
           </ion-label>
-          <ion-input (focus)="focusit('OTHER')" [(ngModel)]="purchaseFromDetail.OTHER" type="text" placeholder="Please enter the name of the establishment (optional)"></ion-input>
+          <ion-input (focus)="focusit('OTHER')" [(ngModel)]="purchaseFromDetail.OTHER" type="text" [placeholder]=" 'PROCESS.INPUT_PLACEHOLDER' | translate"></ion-input>
         </ion-item>
 
       </ion-list>
 
       <div class="noticeBtn">
-        Notice!
-        <br>Cialis is not distributed and sold in online shops.
+       <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
       </div>
     </ion-slide>
 
@@ -78,24 +77,18 @@
         <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
-        <!-- <alert-view [text]="'One moment…<br>System Validation In Progress…'" [buttonText]="'OK'" (buttonClick)="changeView('1.s')"></alert-view> -->
-        <alert-view [text]="'One moment…<br>System Validation In Progress…'"></alert-view>
+        <alert-view [text]=" 'ALERT_MSG.SYSTEM_VALIDATION' | translate "></alert-view>
       </section>
       <section *ngIf="view == '1.s'">
-        <alert-view [text]="'Code Validated!<br>Proceed to next step…'" [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
+        <alert-view [text]=" 'ALERT_MSG.CODE_VALIDATED' | translate " [buttonText]="'OK'" (buttonClick)="nextSlide()"></alert-view>
 
       </section>
       <section *ngIf="view == '1.e'">
-        <alert-view [text]="'Product authentication failed.<br> 
-          Kindly contact numbers below to report the counterfeit product.<br>         
-          Please contact support center during normal office hours: 0809-009-369<br> 
-          Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]=" 'ALERT_MSG.PRODDUCT_AUTHENTICATION_FAILED' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
 
       </section>
       <section *ngIf="view == '1.ee'">
-        <alert-view [text]="'System encountered some error while validating.<br> 
-          Please contact support center during normal office hours: 0809-009-369<br> 
-          Or Toll-free Number 0800-285-000'" [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]=" 'ALERT_MSG.SYSTEM_ENCOUNTERED_ERROR' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
     </ion-slide>
 
@@ -103,7 +96,7 @@
       <section *ngIf="view == '2.1'">
         <ion-list radio-group [(ngModel)]="packageType" no-lines>
           <ion-list-header no-lines>
-              您要查詢的品項是?
+              {{ "PROCESS.LABEL_SLIDE1" | translate }}
           </ion-list-header>
 
           <ion-item no-lines (click)="packageType = '5mg'" no-lines>
@@ -111,7 +104,7 @@
               <img [src]="packageType == '5mg' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
             </ion-avatar>
             <ion-label>
-              <span>Cialis 5mg</span>
+              <span>{{ "PROCESS.5MG" | translate }}</span>
             </ion-label>
           </ion-item>
 
@@ -120,14 +113,14 @@
               <img [src]="packageType == '20mg' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
             </ion-avatar>
             <ion-label>
-              <span>Cialis 20mg</span>
+              <span>{{ "PROCESS.20MG" | translate }}</span>
             </ion-label>
           </ion-item>
         </ion-list>
       </section>
 
       <section *ngIf="view == '2.2'">
-        <alert-view [text]="'Please follow the product validation image guide presented to verify the packaging.'" [buttonText]="'OK'"
+        <alert-view [text]="  'ALERT_MSG.VALIDATION_IMAGE' | translate " [buttonText]="'OK'"
           (buttonClick)="getImg(packageType)"></alert-view>
       </section>
 
@@ -135,15 +128,14 @@
         <div class="medImg">
           <img [src]="medImgURL">
         </div>
-        <div class="noticeBtn" tappable>
-          Notice!
-          <br> Cialis is not distributed and sold in online shops.
-        </div>
+        <div class="noticeBtn">
+            <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
+           </div>
       </section>
       <section *ngIf="view == '2.4'">
         <ion-list no-lines>
           <ion-list-header no-lines>
-              針對上述犀利士外包裝:
+              {{ "PROCESS.LABEL_SLIDE2" | translate }}
           </ion-list-header>
 
           <ion-item no-lines (click)="verificationResult = 'ALL'">
@@ -151,7 +143,7 @@
               <img [src]="verificationResult == 'ALL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
             </ion-avatar>
             <ion-label>
-              <span>All checkpoint passed</span>
+              <span>{{ "PROCESS.ALL_CHECKPOINT" | translate }}</span>
             </ion-label>
           </ion-item>
 
@@ -160,7 +152,7 @@
               <img [src]="verificationResult == 'SOME' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
             </ion-avatar>
             <ion-label>
-              <span>Some didn’t match correctly</span>
+              <span>{{ "PROCESS.SOME" | translate }}</span>
             </ion-label>
           </ion-item>
 
@@ -169,20 +161,16 @@
               <img [src]="verificationResult == 'NOT_SURE' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
             </ion-avatar>
             <ion-label>
-              <span>Not sure if the package validation matches the guide </span>
+              <span>{{ "PROCESS.NOT_SURE" | translate }} </span>
             </ion-label>
           </ion-item>
         </ion-list>
-        <!-- <div (click)="verificationCheck(verificationResult)" class="noticeBtn">
-          Next
-        </div> -->
       </section>
       <section *ngIf="view == '2.6'">
-        <alert-view [text]="'Please contact the call center during working hours to help you validate the product. 
-          <br>0809-009-369</br>'" [buttonText]="'OK'" (buttonClick)="this.nextSlide()"></alert-view>
+        <alert-view [text]="'ALERT_MSG.CALL_CENTER' | translate" [buttonText]="'OK'" (buttonClick)="this.nextSlide()"></alert-view>
       </section>
       <section *ngIf="view == '2.5'">
-        <alert-view [text]="'Authentication Passed.!<br>Product is confirmed to be distributed by Lilly Taiwan.'" [buttonText]="'OK'"
+        <alert-view [text]="'ALERT_MSG.AUTHENTICATION_PASSED' | translate" [buttonText]="'OK'"
           (buttonClick)="this.nextSlide()"></alert-view>
       </section>
     </ion-slide>
@@ -192,10 +180,10 @@
         <alert-view [text]="'Sending data to server..'" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '3.s'">
-        <alert-view [text]="'Validation details send for record keeping. '" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]=" 'ALERT_MSG.DETIALS_SEND' | translate " [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '3.e'">
-        <alert-view [text]="'Validation details send Error'" [buttonText]="'Validate next product'" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'Validation details send Error'" [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
       </section>
 
     </ion-slide>
@@ -221,22 +209,22 @@
     <p> 台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950</p>
 
     <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
-      <span>下一個</span>
+      <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
 
     <button ion-button clear item-end (click)="changeView('2.2')" *ngIf="view == '2.1' && packageType != '' ">
-      <span>下一個</span>
+      <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
 
     <button ion-button clear item-end (click)="changeView('2.4')" *ngIf="view == '2.3'">
-      <span>下一個</span>
+      <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
 
     <button ion-button clear item-end (click)="verificationCheck(verificationResult)" *ngIf="view == '2.4' && verificationResult !=''">
-      <span>下一個</span>
+      <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
   </ion-item>

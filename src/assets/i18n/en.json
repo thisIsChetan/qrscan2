@@ -1,3 +1,47 @@
 {
-    "HELLO": "Product Source"
+    "NOTICE": {
+        "MSG": "提醒您!<br> 此應用程式僅供一由醫師處方犀利士之病患查詢參品使用 <br> 每筆查詢結果均會回報至台灣禮來公司 <br>敬請謹慎操作 謝謝!"
+    },
+    "FOOTER": {
+        "ADDRESS": "台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950"
+    },
+    "FABMENU": {
+        "LABEL": "選單"
+    },
+    "LOGINPAGE": {
+        "LABEL": "請輸入由醫事人員處取得之認証碼以啟動此應用程式: "
+    },
+    "PROCESS": {
+        "PRODUCT_SOURCE": "產品來源",
+        "CODE_SCANNER": "掃描Code",
+        "VALIDATE_PACKAGEING": "核對包裝",
+        "COMPLETE_VALIDATEION": "完成查詢",
+        "LABEL_SLIDE0": "犀利士取得來源:",
+        "HOSPITAL": "醫院",
+        "PHARMACY": "藥局",
+        "OTHER": "其它",
+        "INPUT_PLACEHOLDER": "請輸入取得來源 (非必填)",
+        "NOTICE": "請注意! <br>犀利士絕不會在網路上販售",
+        "NEXT": "下一個",
+        "LABEL_SLIDE1": "您要查詢的品項是?",
+        "5MG": "犀利士 5mg",
+        "20MG": "犀利士20mg",
+        "5MG_GUIDE": "犀利士真品包裝辦識重點",
+        "20MG_GUIDE": "犀利士真品包裝辦識重點",
+        "LABEL_SLIDE2": "針對上述犀利士外包裝:",
+        "ALL_CHECKPOINT":"每項特徵均符合描述",
+        "SOME":"有特徵不符合描述",
+        "NOT_SURE":"我不確定每項特徵是否符合描述"
+    },
+    "ALERT_MSG": {
+        "SYSTEM_VALIDATION": "One moment… <br>System Validation In Progress…",
+        "CODE_VALIDATED": "[資料吻合] <br> 請進行下一步",
+        "PRODDUCT_AUTHENTICATION_FAILED": "資料不吻合台灣禮來公司原廠出貨資訊<br>請於服務時間電洽:<br>0809-009-369<br>打擊偽藥免費服務專線<br>或<br>0800-285-000",
+        "SYSTEM_ENCOUNTERED_ERROR": "系統異常<br> 請於服務時間電洽:<br>0809-009-369<br>打擊偽藥免費服務專線",
+        "VALIDATION_IMAGE": "請按照下列步驟依序比對",
+        "AUTHENTICATION_PASSED":"資料吻合台灣禮來公司原廠出貨資訊<br>此犀利士為原廠正品",
+        "CALL_CENTER":"請於服務時間電洽:<br>0809-009-369 <br>打擊偽藥免費服務專線<br>將有專人協助您處理!",
+        "DETIALS_SEND":"系統上傳中…<br>已記錄此筆資料 ",
+        "VALIDATE_NEXT":"查詢下一筆"
+    }
 }

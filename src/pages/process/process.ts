@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
-import {TranslateService} from '@ngx-translate/core';
+
 /**
  * Generated class for the ProcessPage page.
  *
@@ -23,10 +23,7 @@ export class ProcessPage {
   purchaseFromDetail: any = {};
   isImage: boolean = false;  
   view:string;
-  isData={
-    'Exists': '' ,
-    'Frequency_exceeded': ''
-  }
+ 
   
  // Exists:boolean;
   packageType:string='';
@@ -43,9 +40,9 @@ export class ProcessPage {
                public navParams: NavParams,
                private barcode: BarcodeProvider,
                private contentProvider: ContentProvider,
-               private sendData: SendDataProvider,
-              private translate:TranslateService) {
-                translate.setDefaultLang('en');
+               private sendData: SendDataProvider) {
+               
+              
                 
   }
 
@@ -60,7 +57,6 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   resetValidation(){
-    alert(this.purchaseFromDetail.HOSPITAL);
     this.purchaseFrom = "";
     this.packageType = "";
     this.verificationResult = "";
@@ -116,7 +112,19 @@ export class ProcessPage {
   //Slide 1
 
   showBarcode(){
-    this.view = "1.s";
+    this.barcode.scan().then((data:any)=>{
+      this.postData.scannedCode = data.text;
+      this.barcode.validate(data).then((isValid)=>{
+        if(isValid){
+          this.view = "1.s";
+        }
+        else{
+          this.view = "1.e";
+        }
+      }).catch((err)=>{
+        this.view = "1.ee";
+      })      
+    })
   }
 
   medImgURL: string;
