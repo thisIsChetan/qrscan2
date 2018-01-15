@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
 import { LoginPage } from '../pages/login/login';
 
 @Component({

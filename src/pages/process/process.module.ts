@@ -11,7 +11,12 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     IonicPageModule.forChild(ProcessPage),
     ComponentsModule,
-    TranslateModule.forRoot()
+    TranslateModule.forChild()
   ],
 })
-export class ProcessPageModule {}
+export class ProcessPageModule {
+//   constructor(translate: TranslateService) {
+    
+//      translate.setDefaultLang('en');
+//  }
+}

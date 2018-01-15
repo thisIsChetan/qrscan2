@@ -7,10 +7,13 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
-import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
+
+import {TranslateModule, TranslateLoader , TranslateService} from '@ngx-translate/core';
+
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { LoginPage } from '../pages/login/login';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     LoginPage,
+    
     TermsAndConditionsPage
   ],
   imports: [
@@ -63,6 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     LoginPage,
+    
     TermsAndConditionsPage
   ],
   providers: [
@@ -83,9 +88,10 @@ export function createTranslateLoader(http: HttpClient) {
     FabButtonProvider
   ]
 })
-export class AppModule {
+
+export class AppModule { 
   constructor(translate: TranslateService) {
-    // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
 }
- }
+}
+
