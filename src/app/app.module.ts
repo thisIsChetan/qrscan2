@@ -6,7 +6,7 @@ import { Camera } from '@ionic-native/camera';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
+import { IonicStorageModule } from '@ionic/storage';
 
 import {TranslateModule, TranslateLoader , TranslateService} from '@ngx-translate/core';
 
@@ -45,6 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

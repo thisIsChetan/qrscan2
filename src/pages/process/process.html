@@ -16,7 +16,7 @@
   <ion-navbar *ngIf="view == '2.3'">
     <ion-buttons icon-only clear left>
       <button ion-button (tap)="changeView('2.1')">
-        <ion-icon name="arrow-back" large></ion-icon>
+          <ion-icon  md="md-arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
@@ -32,13 +32,13 @@
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <ion-list no-lines class="slide0-margin">
-        
+  
         <ion-list-header no-lines class="headFirst" >
             {{ "PROCESS.LABEL_SLIDE0" | translate }}
         </ion-list-header>
 
-        <ion-item no-lines (tap)="purchaseFrom = 'HOSPITAL'">
-          <ion-avatar item-start>
+        <ion-item no-lines >
+          <ion-avatar item-start (tap)="purchaseFrom = 'HOSPITAL'">
             <img [src]="purchaseFrom == 'HOSPITAL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
           </ion-avatar>
           <ion-label fixed>
@@ -191,8 +191,8 @@
   </ion-slides>
 
   <ion-fab right bottom #fab>
-    <span>選單</span>
     <img ion-fab src="assets/imgs/menu.png">
+    <span>選單</span>
     <ion-fab-list side="top">
       <button ion-fab (click)="fabButton.showPrivacy(fab)">
         <ion-label>Privacy content</ion-label>
@@ -211,7 +211,6 @@
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
     <p> 台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950</p>
-
     <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
       <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>

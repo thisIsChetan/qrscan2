@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GLOBALS } from '../../data/globals'
 import { HTTP } from '@ionic-native/http';
+import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the TermsOfUseProvider provider.
@@ -11,14 +12,12 @@ import { HTTP } from '@ionic-native/http';
 @Injectable()
 export class TermsOfUseProvider {
 
-  constructor(public http: HTTP) {
+  constructor(public http: HTTP, private storage:Storage) {
     console.log('Hello TermsOfUseProvider Provider');
   }
 
 getTerms(){
-
   let url = GLOBALS.TREMS_OF_USE;
- 
   console.log("Termsofuse", url)
     return new Promise((resolve, reject)=>{
 
@@ -31,11 +30,35 @@ getTerms(){
         console.log(res);
         let data = JSON.parse(res.data); 
         console.log(data.items[0].fields.termsOfUseContent);
-        resolve("https:" + data.items[0].fields.termsOfUseContent);
+        resolve(data.items[0].fields.termsOfUseContent);
       }).catch((err)=>{
         reject(err);
       })
     })
 
 }
+
+getVersion(){
+  
+    let url = GLOBALS.TREMS_OF_USE;
+    
+    console.log("Termsofuse", url)
+      return new Promise((resolve, reject)=>{
+        let headers = {};
+        this.http.setDataSerializer("json");
+        this.http.setHeader("Accept", "application/json");
+        this.http.setHeader("Content-Type", "application/json");
+        this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
+        this.http.get(url,{}, headers).then((res)=>{
+          console.log(res);
+          let data = JSON.parse(res.data); 
+          console.log(data.items[0].fields.termsOfUseContent);
+          resolve(data.items[0].sys.revision);
+        }).catch((err)=>{
+          reject(err);
+        })
+      })
+  
+  }
+
 }

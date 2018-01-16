@@ -10,4 +10,5 @@ export class GLOBALS {
     public static PRIVACY="https://cdn.contentful.com/spaces/559wkn4ymikl/entries?access_token=9b6944ad4cd118a9f3ea3ee267076d0a72f316964c63e6bdf5cce040055ed395&sys.revision[gt]=0&content_type=privacyContent&select=fields.title,fields.privacyContent,sys.revision";
     public static API_AUTH_UNAME="apilocaldev";
     public static API_AUTH_PW="Dev@local";
+    public static TERMS_VERSION='';
 }

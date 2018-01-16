@@ -42,28 +42,9 @@ export class BarcodeProvider {
     })
   }
 
-  // validate(barcodeData){
-
-  //     console.log("Barcode Scanned", barcodeData);
-  //     let headers = new Headers({ 
-  //         'Content-Type': 'application/json'
-  //     });
-  //     let data = {          
-  //         "product_code": barcodeData.text
-  //     }
-  //     return this.http.post(GLOBALS.BARCODE_URL, data,{headers : headers})
-  //     .map((res) =>{
-  //       console.log(res);
-  //       let resJson = res.json();
-  //       console.log(resJson);
-  //       return resJson.exists
-  //     })
-
-
-  // }
+ 
 
   validate(barcodeData){
-   // return true;
     return new Promise((resolve, reject)=>{
 
       console.log("Barcode Scanned", barcodeData);
@@ -78,8 +59,8 @@ export class BarcodeProvider {
       this.http.setHeader("Content-Type", "application/json");
       this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
       this.http.post(GLOBALS.BARCODE_URL, data, headers).then((res: any)=>{
-        console.log("ExistsData:"+JSON.parse(res.data).Frequency_exceeded);
-        if(JSON.parse(res.data).Exists == JSON.parse(res.data).Frequency_exceeded){
+        console.log("ExceededData:"+JSON.parse(res.data).Frequency_exceeded +"Exists:"+JSON.parse(res.data).Exists);
+        if(JSON.parse(res.data).Exists=='true' && JSON.parse(res.data).Frequency_exceeded == 'false'){
           resolve(true);
         }
         else{

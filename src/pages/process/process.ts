@@ -68,7 +68,6 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
   }
   nextSlide(){
-   
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
@@ -103,6 +102,7 @@ export class ProcessPage {
 
   changeView(view){
     this.view = view;
+    
    
   }
 
@@ -156,5 +156,6 @@ export class ProcessPage {
   focusit(val){
     console.log(val);
     this.purchaseFrom = val;
+
   }
 }

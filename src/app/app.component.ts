@@ -5,18 +5,40 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { LoginPage } from '../pages/login/login';
+import { TermsOfUseProvider } from "../providers/terms-of-use/terms-of-use";
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+
+ passcode:any="passcode";
+ rootPage:any = LoginPage;
+  
 
   constructor(platform: Platform,
                statusBar: StatusBar,
                 splashScreen: SplashScreen,
                 keyboard:Keyboard,
-                private ga: GoogleAnalytics) {
+                public termsOfUseProvide: TermsOfUseProvider,
+                private ga: GoogleAnalytics,
+                private storage: Storage) {
+
+                  storage.get('password').then((val) => {
+                    this.passcode=val;
+                  });
+                  alert(this.passcode);
+                  this.termsOfUseProvide.getVersion().then((data) =>{
+                    alert("version:"+data);
+                  }).catch((err) =>{
+                    alert("Error:"+err);
+                  })
+
+
+
+
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

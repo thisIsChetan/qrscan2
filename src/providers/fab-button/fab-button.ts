@@ -25,6 +25,7 @@ export class FabButtonProvider {
     myModal.present();   
   }
 
+
   showContact(fab: FabContainer){
     console.log("Contact");
     fab.close();
