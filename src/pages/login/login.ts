@@ -5,8 +5,9 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ContactProvider } from "../../providers/contact/contact";
 import { TermsOfUseProvider } from "../../providers/terms-of-use/terms-of-use";
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
-import { Storage } from '@ionic/storage';
-
+import { Storage } from '@ionic/storage'; 
+import {ProcessPage} from '../process/process';
+declare var cordova:any;
 /*
  * Generated class for the LoginPage page.
  *
@@ -18,6 +19,7 @@ import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  
   providers: [AuthServiceProvider, TermsOfUseProvider]
 })
 export class LoginPage {
@@ -63,7 +65,10 @@ export class LoginPage {
     if(currentIndex == 2)
     {
       this.next="active";
-  
+      
+    }
+    else if(currentIndex == 1){
+      cordova.plugins.Keyboard.close();
     }
     console.log('Current index is', this.next);
   }
@@ -77,7 +82,12 @@ export class LoginPage {
   }
 
   navigateToProcess(){
-    this.navCtrl.setRoot("ProcessPage");
+    this.navCtrl.push(ProcessPage);
+    this.termsOfUseProvide.getVersion().then((data) =>{
+      this.storage.set('version', data);
+    }).catch((err) =>{
+    console.log("error");
+    })
   }
 
   nextTerms() {
@@ -95,6 +105,7 @@ export class LoginPage {
   navigateToNote() {
     if (this.password.length == 4) {
       if ((this.platform.is('core') || this.platform.is('mobileweb'))) {
+        this.storage.set('password', this.password);
         this.slides.lockSwipes(false);
         this.slides.slideTo(1, 500);
         this.slides.lockSwipes(true);
@@ -103,10 +114,11 @@ export class LoginPage {
           console.log(data);
           if (data) {
             if (data.status == "OK") {
+              this.storage.set('password', this.password);
               this.slides.lockSwipes(false);
               this.slides.slideTo(1, 500);
               this.slides.lockSwipes(true);
-              this.storage.set('password', "1234");
+              
             }
             else {
               this.errorMsg = "Wrong Password";

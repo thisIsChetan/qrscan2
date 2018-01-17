@@ -34,7 +34,6 @@
         "NOT_SURE":"我不確定每項特徵是否符合描述"
     },
     "ALERT_MSG": {
-        "SYSTEM_VALIDATION": "One moment… <br>System Validation In Progress…",
         "CODE_VALIDATED": "[資料吻合] <br> 請進行下一步",
         "PRODDUCT_AUTHENTICATION_FAILED": "資料不吻合台灣禮來公司原廠出貨資訊<br>請於服務時間電洽:<br>0809-009-369<br>打擊偽藥免費服務專線<br>或<br>0800-285-000",
         "SYSTEM_ENCOUNTERED_ERROR": "系統異常<br> 請於服務時間電洽:<br>0809-009-369<br>打擊偽藥免費服務專線",
@@ -42,6 +41,16 @@
         "AUTHENTICATION_PASSED":"資料吻合台灣禮來公司原廠出貨資訊<br>此犀利士為原廠正品",
         "CALL_CENTER":"請於服務時間電洽:<br>0809-009-369 <br>打擊偽藥免費服務專線<br>將有專人協助您處理!",
         "DETIALS_SEND":"系統上傳中…<br>已記錄此筆資料 ",
-        "VALIDATE_NEXT":"查詢下一筆"
+        "VALIDATE_NEXT":"查詢下一筆",
+        "PRIVACY_CONTENT":"隱私權",
+        "CONTACT_INFORMATION":"連絡我們",
+        "TERMS_OF_USE":"使用條款",
+        "SYSTEM_VALIDATION":"系統比對資料中…",
+        "CONFIRMATION_DATA_SENT":"此筆資料已上傳系統中.",
+        "SENDING_DATA_SERVER":"資料上傳系統中…",
+        "BARCODE_SCANNING_PROGRESS":"QRCode 掃描中…",
+        "CANCEL":"取消",
+        "OK":"OK",
+        "AGREE":"同意"
     }
 }

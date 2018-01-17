@@ -41,6 +41,7 @@
       <ion-scroll scrollY="true">
        {{termsOfUse}}
       </ion-scroll>
+
     </ion-slide>
 
   </ion-slides>
@@ -55,10 +56,10 @@
     <span> {{ "FABMENU.LABEL" | translate }} </span>
     <ion-fab-list side="top">
       <button ion-fab (click)="fabButton.showPrivacy(fab)">
-        <ion-label>Privacy content</ion-label>
+        <ion-label> {{ "ALERT_MSG.PRIVACY_CONTENT" | translate }} </ion-label>
       </button>
       <button ion-fab (click)="fabButton.showContact(fab)">
-        <ion-label>Contact info</ion-label>
+        <ion-label> {{ "ALERT_MSG.CONTACT_INFORMATION" | translate }} </ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>
@@ -71,7 +72,7 @@
     </ion-thumbnail>
     <p> {{ "FOOTER.ADDRESS" | translate }} </p>
     <button ion-button clear item-end (click)="navigateToProcess()" *ngIf="next == 'active'">
-      <span>{{ "PROCESS.NEXT" | translate }}</span>
+      <span>{{ "ALERT_MSG.OK" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
   </ion-item>

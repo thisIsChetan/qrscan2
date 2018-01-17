@@ -34,6 +34,8 @@ export class FabButtonProvider {
 
   }
 
+
+
   getData(type){
     return new Promise((resolve, reject) => {
       let url:string;
@@ -68,5 +70,7 @@ export class FabButtonProvider {
     })
 
   }
+
+  
 
 }

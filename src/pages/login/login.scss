@@ -8,6 +8,10 @@ page-login {
             height: 87% !important;
             background: rgba(162, 5, 5, 0.5);
             color: white;
+            .scroll{
+                height: 10px;
+                border:1px solid black;
+            }
             ion-scroll {
                 position: initial;
                 display: block;

@@ -7,7 +7,7 @@
 <ion-header>
   <ion-grid [ngClass]="'img'+currentIndex">
     <ion-row>
-      <ion-col col-3> {{ "PROCESS.PRODUCT_SOURCE" | translate }}  </ion-col>
+      <ion-col col-3> {{ "PROCESS.PRODUCT_SOURCE" | translate }} </ion-col>
       <ion-col col-3> {{ "PROCESS.CODE_SCANNER" | translate }} </ion-col>
       <ion-col col-3>{{ "PROCESS.VALIDATE_PACKAGEING" | translate }}</ion-col>
       <ion-col col-3>{{ "PROCESS.COMPLETE_VALIDATEION" | translate }}</ion-col>
@@ -16,7 +16,7 @@
   <ion-navbar *ngIf="view == '2.3'">
     <ion-buttons icon-only clear left>
       <button ion-button (tap)="changeView('2.1')">
-          <ion-icon  md="md-arrow-back"></ion-icon>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
@@ -32,12 +32,12 @@
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <ion-list no-lines class="slide0-margin">
-  
-        <ion-list-header no-lines class="headFirst" >
-            {{ "PROCESS.LABEL_SLIDE0" | translate }}
+
+        <ion-list-header no-lines class="headFirst">
+          {{ "PROCESS.LABEL_SLIDE0" | translate }}
         </ion-list-header>
 
-        <ion-item no-lines >
+        <ion-item no-lines>
           <ion-avatar item-start (tap)="purchaseFrom = 'HOSPITAL'">
             <img [src]="purchaseFrom == 'HOSPITAL' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
           </ion-avatar>
@@ -68,13 +68,13 @@
       </ion-list>
 
       <div class="noticeBtn">
-       <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
+        <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
       </div>
     </ion-slide>
 
     <ion-slide>
       <section *ngIf="view == '1.1'">
-        <alert-view [text]="'Barcode Scanning in progress...'" [buttonText]="' '"></alert-view>
+        <alert-view [text]="'ALERT_MSG.BARCODE_SCANNING_PROGRESS' | translate" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '1.2'">
         <alert-view [text]=" 'ALERT_MSG.SYSTEM_VALIDATION' | translate "></alert-view>
@@ -96,7 +96,7 @@
       <section *ngIf="view == '2.1'">
         <ion-list radio-group [(ngModel)]="packageType" no-lines>
           <ion-list-header no-lines>
-              {{ "PROCESS.LABEL_SLIDE1" | translate }}
+            {{ "PROCESS.LABEL_SLIDE1" | translate }}
           </ion-list-header>
 
           <ion-item no-lines (click)="packageType = '5mg'" no-lines>
@@ -120,8 +120,7 @@
       </section>
 
       <section *ngIf="view == '2.2'">
-        <alert-view [text]="  'ALERT_MSG.VALIDATION_IMAGE' | translate " [buttonText]="'OK'"
-          (buttonClick)="getImg(packageType)"></alert-view>
+        <alert-view [text]="  'ALERT_MSG.VALIDATION_IMAGE' | translate " [buttonText]="'OK'" (buttonClick)="getImg(packageType)"></alert-view>
       </section>
 
       <section *ngIf="view == '2.3'">
@@ -129,13 +128,13 @@
           <img [src]="medImgURL">
         </div>
         <div class="noticeBtn">
-            <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
-           </div>
+          <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
+        </div>
       </section>
       <section *ngIf="view == '2.4'">
         <ion-list no-lines>
           <ion-list-header no-lines>
-              {{ "PROCESS.LABEL_SLIDE2" | translate }}
+            {{ "PROCESS.LABEL_SLIDE2" | translate }}
           </ion-list-header>
 
           <ion-item no-lines (click)="verificationResult = 'ALL'">
@@ -170,14 +169,13 @@
         <alert-view [text]="'ALERT_MSG.CALL_CENTER' | translate" [buttonText]="'OK'" (buttonClick)="this.nextSlide()"></alert-view>
       </section>
       <section *ngIf="view == '2.5'">
-        <alert-view [text]="'ALERT_MSG.AUTHENTICATION_PASSED' | translate" [buttonText]="'OK'"
-          (buttonClick)="this.nextSlide()"></alert-view>
+        <alert-view [text]="'ALERT_MSG.AUTHENTICATION_PASSED' | translate" [buttonText]="'OK'" (buttonClick)="this.nextSlide()"></alert-view>
       </section>
     </ion-slide>
 
     <ion-slide>
       <section *ngIf="view == '3.1'">
-        <alert-view [text]="'Sending data to server..'" [buttonText]="' '"></alert-view>
+        <alert-view [text]="'ALERT_MSG.CONFIRMATION_DATA_SENT' | translate" [buttonText]="' '"></alert-view>
       </section>
       <section *ngIf="view == '3.s'">
         <alert-view [text]=" 'ALERT_MSG.DETIALS_SEND' | translate " [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
@@ -192,13 +190,13 @@
 
   <ion-fab right bottom #fab>
     <img ion-fab src="assets/imgs/menu.png">
-    <span>選單</span>
+    <span>{{ "FABMENU.LABEL" | translate }}</span>
     <ion-fab-list side="top">
       <button ion-fab (click)="fabButton.showPrivacy(fab)">
-        <ion-label>Privacy content</ion-label>
+        <ion-label>{{ "ALERT_MSG.PRIVACY_CONTENT" | translate }}</ion-label>
       </button>
       <button ion-fab (click)="fabButton.showContact(fab)">
-        <ion-label>Contact info</ion-label>
+        <ion-label>{{ "ALERT_MSG.CONTACT_INFORMATION" | translate }}</ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>
@@ -210,7 +208,7 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> 台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: (02) 2715-2950</p>
+    <p> {{ "FOOTER.ADDRESS" | translate }} </p>
     <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
       <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
