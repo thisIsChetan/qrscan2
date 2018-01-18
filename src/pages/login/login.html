@@ -38,9 +38,23 @@
 
     </ion-slide>
     <ion-slide class="terms">
-      <ion-scroll scrollY="true">
-       {{termsOfUse}}
+      <ion-scroll scrollY="true" class="scrollable">
+        <p> {{termsOfUse}}</p>
       </ion-scroll>
+      <ion-list>
+        <ion-item no-lines>
+          <button ion-button  item-start (click)="disagree()">
+            Disagree
+          </button>
+          <button ion-button  item-end (click)="navigateToProcess()">
+            Agree
+          </button>
+        </ion-item>
+      </ion-list>
+
+      <!-- <ion-scroll scrollY="true">
+       {{termsOfUse}}
+      </ion-scroll> -->
 
     </ion-slide>
 
@@ -71,9 +85,9 @@
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
     <p> {{ "FOOTER.ADDRESS" | translate }} </p>
-    <button ion-button clear item-end (click)="navigateToProcess()" *ngIf="next == 'active'">
+    <!-- <button ion-button clear item-end (click)="navigateToProcess()" *ngIf="next == 'active'">
       <span>{{ "ALERT_MSG.OK" | translate }}</span>
       <div class="nextIcon"></div>
-    </button>
+    </button> -->
   </ion-item>
 </ion-footer>

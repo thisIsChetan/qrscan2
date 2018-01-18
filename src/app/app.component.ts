@@ -14,9 +14,13 @@ import { ProcessPage } from '../pages/process/process';
 })
 export class MyApp {
 
- rootPage:any=LoginPage;;
-  flag:boolean=false;
-version:any='';
+rootPage:any=LoginPage;
+flag:boolean=false;
+password='';
+newVersion:any;
+ 
+
+
   constructor(platform: Platform,
                statusBar: StatusBar,
                 splashScreen: SplashScreen,
@@ -54,6 +58,27 @@ version:any='';
           this.ga.setAllowIDFACollection(true);
         }).catch(e => console.log("Google Analytics Error",e));
       }
+
+
+      this.storage.get('versionDetails').then((val) => {
+        if(val.userPass){
+          this.termsOfUseProvide.getVersion().then((data) =>{
+                if(val.version == data){
+                  this.rootPage=ProcessPage;
+                }
+                else{
+                  this.rootPage=LoginPage;
+                }
+                  }).catch((err) =>{
+                  console.log("error");
+                  })
+        }
+        else{
+          this.rootPage=LoginPage;
+        }
+        });
+        
+       // alert("\n appVserion:"+this.password+"appPasword:"+this.valUser.userPass);
 
       // storage.get('password').then((val) => {
       //   if(val ){

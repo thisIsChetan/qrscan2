@@ -21,10 +21,9 @@ export class ProcessPage {
   @ViewChild(Slides) slides: Slides;
   currentIndex:number = 0;
   purchaseFrom:string='';
-  purchaseFromDetail: any = {};
+  purchaseFromDetail: any = { };
   isImage: boolean = false;  
   view:string;
- 
   
  // Exists:boolean;
   packageType:string='';
@@ -64,9 +63,12 @@ export class ProcessPage {
     this.purchaseFrom = "";
     this.packageType = "";
     this.verificationResult = "";
-    this.purchaseFromDetail.HOSPITAL="";
-   // this.purchaseFromDetail[this.purchaseFrom];
     this.purchaseFromDetail = [];
+    this.purchaseFromDetail= {
+      HOSPITAL:'',
+      PHARMACY:'',
+      OTHER:''
+    };
     this.slides.lockSwipes(false);
     this.slides.slideTo(0);
     this.slides.lockSwipes(true);

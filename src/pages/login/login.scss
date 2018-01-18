@@ -16,6 +16,26 @@ page-login {
                 position: initial;
                 display: block;
                 height: 9px !important;
+                .scroll-content{
+                    height: 84%;
+                }
+            }
+            ion-list{
+                position: absolute;
+                background: transparent !important;
+                width: 100%;
+                bottom: 20px !important;
+                ion-item{
+                    background: transparent !important;
+                    [ion-button]{
+                        background-image: url(../assets/imgs/button-bg.png);
+                        background-repeat: no-repeat;
+                        background-size: 100% 100%;
+                    }
+                    .button-md{
+                        background-color: red !important;
+                    }
+                }
             }
             }
         
