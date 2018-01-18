@@ -52,14 +52,8 @@ export class LoginPage {
     private storage: Storage) {
 
     this.view = '1';
-    this.termsOfUseProvide.getVersion().then((data) => {
-      this.storage.set('id', data);
-    }).catch((err) => {
-      alert(err);
-    })
-    this.storage.get('id').then((val) => {
-      this.userData.version = val;
-    });
+   
+   
   }
 
   ionViewDidLoad() {
@@ -76,17 +70,18 @@ export class LoginPage {
 
   disagree() {
     let confirm = this.alertCtrl.create({
-      title: 'close application?',
-      message: 'Do agree to close this app',
+      title: '您是否確定離開此APP?',
       buttons: [
         {
-          text: 'Ok',
+          text: '是',
           handler: () => {
-            this.platform.exitApp();
+            this.storage.clear().then((val)=>{
+              this.platform.exitApp();
+            })
           }
         },
         {
-          text: 'Cancel',
+          text: '否',
           handler: () => {
             return true;
           }
@@ -118,20 +113,34 @@ export class LoginPage {
   }
 
   navigateToProcess() {
+    this.termsOfUseProvide.getVersion().then((data) => {
+      this.storage.set('id', data);
+      this.storage.get('id').then((val) => {
+        this.userData.version = val;
+        this.storage.set('versionDetails', this.userData);
+        this.navCtrl.push(ProcessPage);
+        console.log("val:"+val);
+      });
+    }).catch((err) => {
+      console.log("error");
+    })
 
-      this.storage.set('versionDetails', this.userData);
-      this.navCtrl.push(ProcessPage);
+
+     
   }
 
   nextTerms() {
     this.slides.lockSwipes(false);
     this.slides.slideTo(2, 500);
     this.slides.lockSwipes(true);
+
     this.termsOfUseProvide.getTerms().then((data: string) => {
       this.termsOfUse = data;
     }).catch((err) => {
       alert("error");
     })
+
+    
   }
 
   navigateToNote() {

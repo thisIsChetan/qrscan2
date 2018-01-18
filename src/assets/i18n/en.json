@@ -9,7 +9,9 @@
         "LABEL": "選單"
     },
     "LOGINPAGE": {
-        "LABEL": "請輸入由醫事人員處取得之認証碼以啟動此應用程式: "
+        "LABEL": "請輸入由醫事人員處取得之認証碼以啟動此應用程式: ",
+        "AGREE":"同意",
+        "DISAGREE":"不同意 "
     },
     "PROCESS": {
         "PRODUCT_SOURCE": "產品來源",
@@ -50,7 +52,7 @@
         "SENDING_DATA_SERVER":"資料上傳系統中…",
         "BARCODE_SCANNING_PROGRESS":"QRCode 掃描中…",
         "CANCEL":"取消",
-        "OK":"OK",
-        "AGREE":"同意"
+        "OK":"OK"
+       
     }
 }

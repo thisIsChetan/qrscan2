@@ -14,27 +14,31 @@ import { ProcessPage } from '../pages/process/process';
 })
 export class MyApp {
 
-rootPage:any=LoginPage;
-flag:boolean=false;
-password='';
-newVersion:any;
- 
-
+  rootPage:any;
+  flag: boolean = false;
+  password = '';
+  newVersion: any;
+  
 
   constructor(platform: Platform,
-               statusBar: StatusBar,
-                splashScreen: SplashScreen,
-                keyboard:Keyboard,
-                public termsOfUseProvide: TermsOfUseProvider,
-                private ga: GoogleAnalytics,
-                private storage: Storage) {
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    keyboard: Keyboard,
+    public termsOfUseProvide: TermsOfUseProvider,
+    private ga: GoogleAnalytics,
+    private storage: Storage) {
 
-                 
+  
+
+   
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      
       keyboard.onKeyboardShow().subscribe(() => {
         document.body.classList.add('keyboard-is-open');
       });
@@ -42,54 +46,48 @@ newVersion:any;
         document.body.classList.remove('keyboard-is-open');
       });
 
-      if(platform.is('ios')){
+      if (platform.is('ios')) {
         this.ga.startTrackerWithId("UA-81052483-47").then(() => {
           console.log('Google analytics is ready now');
           this.ga.debugMode();
           this.ga.setAllowIDFACollection(true);
-        }).catch(e => console.log("Google Analytics Error",e));
+        }).catch(e => console.log("Google Analytics Error", e));
       }
 
-      if(platform.is("android")){
+      if (platform.is("android")) {
         this.ga.startTrackerWithId("UA-81052483-48").then(() => {
           console.log('Google analytics is ready now');
           this.ga.debugMode();
-          this.ga.trackView("login","");
+          this.ga.trackView("login", "");
           this.ga.setAllowIDFACollection(true);
-        }).catch(e => console.log("Google Analytics Error",e));
+        }).catch(e => console.log("Google Analytics Error", e));
       }
 
-
-      this.storage.get('versionDetails').then((val) => {
-        if(val.userPass){
-          this.termsOfUseProvide.getVersion().then((data) =>{
-                if(val.version == data){
-                  this.rootPage=ProcessPage;
-                }
-                else{
-                  this.rootPage=LoginPage;
-                }
-                  }).catch((err) =>{
-                  console.log("error");
-                  })
+      this.storage.length().then((len) => {
+        if(len == 0){
+         this.rootPage = LoginPage;
         }
         else{
-          this.rootPage=LoginPage;
+         this.storage.get('versionDetails').then((val) => {
+           if (val.userPass) {
+             this.termsOfUseProvide.getVersion().then((data) => {
+               if (val.version == data) {
+                 this.rootPage = ProcessPage;
+               }
+               else {
+                 this.rootPage = LoginPage;
+               }
+             }).catch((err) => {
+               this.rootPage = LoginPage;
+             })
+           }
+           else {
+             this.rootPage = LoginPage;
+           }
+         });
         }
-        });
-        
-       // alert("\n appVserion:"+this.password+"appPasword:"+this.valUser.userPass);
+       });
 
-      // storage.get('password').then((val) => {
-      //   if(val ){
-      //     this.rootPage=ProcessPage;
-      //   }
-      //   else{
-      //     this.rootPage=LoginPage;
-      //   }
-      // });
-
-    
     });
   }
 }

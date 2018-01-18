@@ -44,10 +44,10 @@
       <ion-list>
         <ion-item no-lines>
           <button ion-button  item-start (click)="disagree()">
-            Disagree
+            {{ "LOGINPAGE.DISAGREE" | translate }}
           </button>
           <button ion-button  item-end (click)="navigateToProcess()">
-            Agree
+            {{ "LOGINPAGE.AGREE" | translate }}
           </button>
         </ion-item>
       </ion-list>
@@ -85,9 +85,5 @@
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
     <p> {{ "FOOTER.ADDRESS" | translate }} </p>
-    <!-- <button ion-button clear item-end (click)="navigateToProcess()" *ngIf="next == 'active'">
-      <span>{{ "ALERT_MSG.OK" | translate }}</span>
-      <div class="nextIcon"></div>
-    </button> -->
   </ion-item>
 </ion-footer>
