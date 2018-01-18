@@ -25,6 +25,7 @@ export class FabButtonProvider {
     myModal.present();   
   }
 
+
   showContact(fab: FabContainer){
     console.log("Contact");
     fab.close();
@@ -32,6 +33,8 @@ export class FabButtonProvider {
     myModal.present();
 
   }
+
+
 
   getData(type){
     return new Promise((resolve, reject) => {
@@ -67,5 +70,7 @@ export class FabButtonProvider {
     })
 
   }
+
+  
 
 }

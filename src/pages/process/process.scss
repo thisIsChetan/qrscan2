@@ -36,7 +36,6 @@ page-process {
                     color: white;
                     text-align: center;
                     position: relative;
-                    margin-top: 5px !important;
                     font-size: 12px;
                 }
             }
@@ -61,14 +60,19 @@ page-process {
 
     ion-content{
         ion-slides {
+         
             section {
                 .mar-top{
                     margin-top: 10%;
                 }
                 .medImg{
-                   
-                    height: 369px;
+                    height: 324px;
+                    margin-top: 31px;
                     width: 100%;
+                    
+                    img{
+                        width: 100%;                        
+                    }
                 }
 
             }
@@ -111,7 +115,7 @@ page-process {
                 background-image: url(../assets/imgs/button-bg.png);
                 background-size: 100% 100%;
                 max-width: 420px;
-                margin: auto;
+                margin-top: 30px;
                 padding: 10px;
                 font-size: 13px;
                 color: white !important;
@@ -192,6 +196,7 @@ page-process {
     body.keyboard-open .has-footer{	
         bottom: 0;
         }
+   
 
     .fix-img{
         width: 100% !important;

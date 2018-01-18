@@ -17,6 +17,8 @@ import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 export class FabDetailPage {
   content: string;
   type: string;
+  head:string;
+  
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -30,6 +32,12 @@ export class FabDetailPage {
     this.fabButton.getData(this.type).then((data: string)=>{
       this.content = data;
     })
+    if(this.type == "Privacy"){
+      this.head="隱私權";
+      
+    }else if(this.type == "Contact"){
+      this.head="連絡我們";
+    }
   }
 
   exit(){

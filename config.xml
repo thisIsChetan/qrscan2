@@ -23,6 +23,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ff0000" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="portrait" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -93,6 +94,9 @@
     <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-google-analytics" spec="^1.8.3" />
-    <engine name="android" spec="6.3.0" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
+    <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
 </widget>

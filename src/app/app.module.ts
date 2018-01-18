@@ -6,14 +6,14 @@ import { Camera } from '@ionic-native/camera';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
-
+import { IonicStorageModule } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
 import {TranslateModule, TranslateLoader , TranslateService} from '@ngx-translate/core';
 
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { LoginPage } from '../pages/login/login';
-
+import { ProcessPage } from '../pages/process/process';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,12 +39,13 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     LoginPage,
-    
+    ProcessPage,
     TermsAndConditionsPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -67,13 +68,13 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     LoginPage,
-    
+    ProcessPage,
     TermsAndConditionsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     Camera,
     BarcodeProvider,
@@ -85,7 +86,8 @@ export function createTranslateLoader(http: HttpClient) {
     HTTP,
     ContactProvider,
     TermsOfUseProvider,
-    FabButtonProvider
+    FabButtonProvider,
+    Network
   ]
 })
 

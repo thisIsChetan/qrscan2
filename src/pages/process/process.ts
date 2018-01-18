@@ -4,6 +4,7 @@ import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
+
 /**
  * Generated class for the ProcessPage page.
  *
@@ -20,10 +21,9 @@ export class ProcessPage {
   @ViewChild(Slides) slides: Slides;
   currentIndex:number = 0;
   purchaseFrom:string='';
-  purchaseFromDetail: any = {};
+  purchaseFromDetail: any = { };
   isImage: boolean = false;  
   view:string;
- 
   
  // Exists:boolean;
   packageType:string='';
@@ -42,7 +42,8 @@ export class ProcessPage {
                private contentProvider: ContentProvider,
                private sendData: SendDataProvider,
                private fabButton: FabButtonProvider ) {
- 
+
+               
                 
   }
 
@@ -50,6 +51,8 @@ export class ProcessPage {
     console.log('ionViewDidLoad ProcessPage');
     this.slides.lockSwipes(true);
   }
+  
+  
 
   goToSlide(slide) {
     this.slides.lockSwipes(false);
@@ -60,15 +63,17 @@ export class ProcessPage {
     this.purchaseFrom = "";
     this.packageType = "";
     this.verificationResult = "";
-    this.purchaseFromDetail.HOSPITAL="";
-   // this.purchaseFromDetail[this.purchaseFrom];
     this.purchaseFromDetail = [];
+    this.purchaseFromDetail= {
+      HOSPITAL:'',
+      PHARMACY:'',
+      OTHER:''
+    };
     this.slides.lockSwipes(false);
     this.slides.slideTo(0);
     this.slides.lockSwipes(true);
   }
   nextSlide(){
-   
     this.slides.lockSwipes(false);
     this.slides.slideNext(500, true);
     this.slides.lockSwipes(true);
@@ -93,6 +98,7 @@ export class ProcessPage {
       }).catch((data)=>{
         console.log(data);
         this.view = '3.e'
+        alert("Please check your network Connection");
       })
     }
     
@@ -103,6 +109,7 @@ export class ProcessPage {
 
   changeView(view){
     this.view = view;
+    
    
   }
 
@@ -123,6 +130,7 @@ export class ProcessPage {
         }
       }).catch((err)=>{
         this.view = "1.ee";
+        alert("Please check your network Connection");
       })      
     })
   }
@@ -135,7 +143,7 @@ export class ProcessPage {
       console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", url)
       this.changeView('2.3')
     }).catch((err)=>{
-      console.log("Err",err);
+      alert("Please check your network connection");
     })
   }
 
@@ -150,9 +158,6 @@ export class ProcessPage {
       this.nextSlide();
     }
   }
-  
- 
-
   focusit(val){
     console.log(val);
     this.purchaseFrom = val;

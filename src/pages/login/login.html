@@ -1,12 +1,12 @@
 <ion-content padding no-bounce>
 
-  <ion-slides  (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
+  <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
       <div class="slide0-margin" class="container" *ngIf="view == '1'">
         <ion-list no-lines>
           <ion-item>
             <ion-label>
-                {{ "LOGINPAGE.LABEL" | translate }}
+              {{ "LOGINPAGE.LABEL" | translate }}
             </ion-label>
           </ion-item>
 
@@ -31,16 +31,31 @@
     </ion-slide>
 
     <ion-slide>
-      <section >
-        <alert-view [text]=" 'NOTICE.MSG' | translate"   [buttonText]="'OK'" (buttonClick)="nextTerms()">
+      <section>
+        <alert-view [text]=" 'NOTICE.MSG' | translate" [buttonText]="'OK'" (buttonClick)="nextTerms()">
         </alert-view>
       </section>
+
     </ion-slide>
     <ion-slide class="terms">
-     <section >
-        <alert-view [text]="termsOfUse " [buttonText]="'OK'" (buttonClick)="navigateToProcess()">
-        </alert-view>
-      </section>
+      <ion-scroll scrollY="true" class="scrollable">
+        <p> {{termsOfUse}}</p>
+      </ion-scroll>
+      <ion-list>
+        <ion-item no-lines>
+          <button ion-button  item-start (click)="disagree()">
+            Disagree
+          </button>
+          <button ion-button  item-end (click)="navigateToProcess()">
+            Agree
+          </button>
+        </ion-item>
+      </ion-list>
+
+      <!-- <ion-scroll scrollY="true">
+       {{termsOfUse}}
+      </ion-scroll> -->
+
     </ion-slide>
 
   </ion-slides>
@@ -50,14 +65,15 @@
   </section>
 
   <ion-fab right bottom #fab *ngIf="currentIndex == 0">
-    <span> {{ "FABMENU.LABEL" | translate }} </span>
+
     <img ion-fab src="assets/imgs/menu.png">
+    <span> {{ "FABMENU.LABEL" | translate }} </span>
     <ion-fab-list side="top">
       <button ion-fab (click)="fabButton.showPrivacy(fab)">
-        <ion-label>Privacy content</ion-label>
+        <ion-label> {{ "ALERT_MSG.PRIVACY_CONTENT" | translate }} </ion-label>
       </button>
       <button ion-fab (click)="fabButton.showContact(fab)">
-        <ion-label>Contact info</ion-label>
+        <ion-label> {{ "ALERT_MSG.CONTACT_INFORMATION" | translate }} </ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>
@@ -68,6 +84,10 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p>  {{ "FOOTER.ADDRESS" | translate }} </p>
+    <p> {{ "FOOTER.ADDRESS" | translate }} </p>
+    <!-- <button ion-button clear item-end (click)="navigateToProcess()" *ngIf="next == 'active'">
+      <span>{{ "ALERT_MSG.OK" | translate }}</span>
+      <div class="nextIcon"></div>
+    </button> -->
   </ion-item>
 </ion-footer>
