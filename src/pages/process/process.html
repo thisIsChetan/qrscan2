@@ -46,6 +46,7 @@
           </ion-label>
           <ion-input (focus)="focusit('HOSPITAL')" [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" [placeholder]=" 'PROCESS.INPUT_PLACEHOLDER' | translate "></ion-input>
         </ion-item>
+        
         <ion-item no-lines (tap)="purchaseFrom = 'PHARMACY'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'PHARMACY' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">

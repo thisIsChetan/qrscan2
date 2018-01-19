@@ -34,7 +34,9 @@ export class FabButtonProvider {
 
   }
 
-
+  closeFab(fab: FabContainer){
+    fab.close();
+  }
 
   getData(type){
     return new Promise((resolve, reject) => {
