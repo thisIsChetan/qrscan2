@@ -1,4 +1,4 @@
-<ion-content padding no-bounce>
+<ion-content padding no-bounce >
 
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
@@ -14,7 +14,7 @@
             <form>
               <ion-row>
                 <ion-col col-10>
-                  <ion-input class="text-input" (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput type="number" pattern="[0-9]*"
+                  <ion-input class="text-input" (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput  type="tel" maxlength="4" (keypress)="keyPress($event)" pattern="[0-9]*"
                     placeholder="Access PIN/Passcode" name="pass" required></ion-input>
                 </ion-col>
                 <ion-col col-2 class="searchBtn">

@@ -61,6 +61,13 @@ export class LoginPage {
     this.slides.lockSwipes(true);
   }
 
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
   goToSlide(slide) {
     this.slides.lockSwipes(false);
     this.slides.slideTo(slide, 500);
@@ -104,7 +111,7 @@ export class LoginPage {
     console.log('Current index is', this.next);
   }
 
-
+  
 
   privacy(fab: FabContainer) {
     fab.close();
@@ -113,11 +120,15 @@ export class LoginPage {
   }
 
   navigateToProcess() {
+  
     this.termsOfUseProvide.getVersion().then((data) => {
       this.storage.set('id', data);
+      this.storage.set('password', this.password);
+      this.userData.userPass = this.password;
       this.storage.get('id').then((val) => {
         this.userData.version = val;
         this.storage.set('versionDetails', this.userData);
+
         this.navCtrl.push(ProcessPage);
         console.log("val:"+val);
       });
@@ -146,8 +157,6 @@ export class LoginPage {
   navigateToNote() {
     if (this.password.length == 4) {
       if ((this.platform.is('core') || this.platform.is('mobileweb'))) {
-        this.storage.set('password', this.password);
-        this.userData.userPass = this.password;
         this.slides.lockSwipes(false);
         this.slides.slideTo(1, 500);
         this.slides.lockSwipes(true);
@@ -156,8 +165,8 @@ export class LoginPage {
           console.log(data);
           if (data) {
             if (data.status == "OK") {
-              this.storage.set('password', this.password);
-              this.userData.userPass = this.password;
+             
+              
               this.slides.lockSwipes(false);
               this.slides.slideTo(1, 500);
               this.slides.lockSwipes(true);
