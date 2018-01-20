@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
@@ -26,18 +26,38 @@ export class MyApp {
     keyboard: Keyboard,
     public termsOfUseProvide: TermsOfUseProvider,
     private ga: GoogleAnalytics,
+    public alertCtrl: AlertController,
     private storage: Storage) {
-
-  
-
-   
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-
+      
+      platform.registerBackButtonAction(() => {
+        let confirm = this.alertCtrl.create({
+          title: '您是否確定離開此APP?',
+          buttons: [
+            {
+              text: '是',
+              handler: () => {
+                this.storage.clear().then((val) => {
+                  platform.exitApp();
+                })
+              }
+            },
+            {
+              text: '否',
+              handler: () => {
+                return true;
+              }
+            }
+    
+          ]
+        });
+        confirm.present()
+      });
       
       keyboard.onKeyboardShow().subscribe(() => {
         document.body.classList.add('keyboard-is-open');

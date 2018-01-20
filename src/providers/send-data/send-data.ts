@@ -24,7 +24,7 @@ export class SendDataProvider {
       this.http.setHeader("Accept", "application/json");
       this.http.setHeader("Content-Type", "application/json");
       this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
-      this.http.post(GLOBALS.AUTH_URL, postData, headers).then((res)=>{
+      this.http.post(GLOBALS.SEND_DATA_URL, postData, headers).then((res)=>{
         console.log(res);
         // alert(JSON.stringify(data.data));
         resolve(JSON.parse(res.data));

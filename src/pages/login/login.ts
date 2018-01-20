@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { Cordova } from '@ionic-native/core';
-import { IonicPage, NavController, NavParams, Platform, Slides, FabContainer, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Slides, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ContactProvider } from "../../providers/contact/contact";
 import { TermsOfUseProvider } from "../../providers/terms-of-use/terms-of-use";
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { Storage } from '@ionic/storage';
 import { ProcessPage } from '../process/process';
+import { FabContainer } from 'ionic-angular';
+
 declare var cordova: any;
 /*
  * Generated class for the LoginPage page.
@@ -33,6 +35,7 @@ export class LoginPage {
   termsOfUse: string = '';
   currentIndex: number = 0;
   next: string = '';
+  isenable:boolean=false;
   userData = {
     userPass: '',
     version: ''
@@ -52,22 +55,19 @@ export class LoginPage {
     private storage: Storage) {
 
     this.view = '1';
-   
-   
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     this.slides.lockSwipes(true);
   }
-
-  keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
-      event.preventDefault();
-    }
+  fabClose(fab: FabContainer) {
+    fab.close();
+    console.log("Sharing in");
   }
+
   goToSlide(slide) {
     this.slides.lockSwipes(false);
     this.slides.slideTo(slide, 500);
@@ -82,7 +82,7 @@ export class LoginPage {
         {
           text: '是',
           handler: () => {
-            this.storage.clear().then((val)=>{
+            this.storage.clear().then((val) => {
               this.platform.exitApp();
             })
           }
@@ -111,7 +111,7 @@ export class LoginPage {
     console.log('Current index is', this.next);
   }
 
-  
+
 
   privacy(fab: FabContainer) {
     fab.close();
@@ -120,7 +120,7 @@ export class LoginPage {
   }
 
   navigateToProcess() {
-  
+    this.isenable = true;
     this.termsOfUseProvide.getVersion().then((data) => {
       this.storage.set('id', data);
       this.storage.set('password', this.password);
@@ -130,14 +130,14 @@ export class LoginPage {
         this.storage.set('versionDetails', this.userData);
 
         this.navCtrl.push(ProcessPage);
-        console.log("val:"+val);
+        console.log("val:" + val);
       });
     }).catch((err) => {
       console.log("error");
     })
 
 
-     
+
   }
 
   nextTerms() {
@@ -151,7 +151,7 @@ export class LoginPage {
       alert("error");
     })
 
-    
+
   }
 
   navigateToNote() {
@@ -165,12 +165,9 @@ export class LoginPage {
           console.log(data);
           if (data) {
             if (data.status == "OK") {
-             
-              
               this.slides.lockSwipes(false);
               this.slides.slideTo(1, 500);
               this.slides.lockSwipes(true);
-
             }
             else {
               this.errorMsg = "Wrong Password";
