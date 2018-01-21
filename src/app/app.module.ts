@@ -32,6 +32,7 @@ import { HTTP } from '@ionic-native/http';
 import { ContactProvider } from '../providers/contact/contact';
 import { TermsOfUseProvider } from '../providers/terms-of-use/terms-of-use';
 import { FabButtonProvider } from '../providers/fab-button/fab-button';
+import { CheckConnectionProvider } from '../providers/check-connection/check-connection';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -91,7 +92,8 @@ export function createTranslateLoader(http: HttpClient) {
     TermsOfUseProvider,
     FabButtonProvider,
     AndroidPermissions,
-    Network
+    Network,
+    CheckConnectionProvider
   ]
 })
 

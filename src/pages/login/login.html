@@ -13,7 +13,7 @@
             <form>
               <ion-row>
                 <ion-col col-10>
-                  <ion-input class="text-input" (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput  type="tel" maxlength="4" (keypress)="keyPress($event)" pattern="[0-9]*"
+                  <ion-input class="text-input"  (ionChange)=" errorMsg='' " [(ngModel)]="password" clearInput  type="tel" maxLength="4" pattern="\d*"
                     placeholder="Access PIN/Passcode" name="pass" required></ion-input>
                 </ion-col>
                 <ion-col col-2 class="searchBtn">

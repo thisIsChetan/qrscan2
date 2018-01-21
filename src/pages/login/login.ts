@@ -1,13 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { Cordova } from '@ionic-native/core';
+import { FabContainer } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, Platform, Slides, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ContactProvider } from "../../providers/contact/contact";
 import { TermsOfUseProvider } from "../../providers/terms-of-use/terms-of-use";
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { Storage } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
 import { ProcessPage } from '../process/process';
-import { FabContainer } from 'ionic-angular';
+import { CheckConnectionProvider } from "../../providers/check-connection/check-connection"
 
 declare var cordova: any;
 /*
@@ -35,7 +37,7 @@ export class LoginPage {
   termsOfUse: string = '';
   currentIndex: number = 0;
   next: string = '';
-  isenable:boolean=false;
+  isenable: boolean = false;
   userData = {
     userPass: '',
     version: ''
@@ -50,13 +52,13 @@ export class LoginPage {
     public contactProvider: ContactProvider,
     public termsOfUseProvide: TermsOfUseProvider,
     private platform: Platform,
+    private connection: CheckConnectionProvider,
     private fabButton: FabButtonProvider,
     public alertCtrl: AlertController,
     private storage: Storage) {
-
+    
+   console.log("connection:"+connection.getConnectionStatus());
     this.view = '1';
-
-
   }
 
   ionViewDidLoad() {
@@ -74,6 +76,7 @@ export class LoginPage {
     this.slides.lockSwipes(true);
 
   }
+
 
   disagree() {
     let confirm = this.alertCtrl.create({
@@ -133,7 +136,7 @@ export class LoginPage {
         console.log("val:" + val);
       });
     }).catch((err) => {
-      console.log("error");
+      console.log(err);
     })
 
 
@@ -174,7 +177,10 @@ export class LoginPage {
             }
           }
         }).catch((err) => {
-          this.errorMsg = "Please check your network connection.";
+          console.log(err.status);
+          if(err.status == 0){
+            this.errorMsg = "Please check your network connection.";
+          }
         })
 
       }
