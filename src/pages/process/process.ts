@@ -5,7 +5,7 @@ import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { FabContainer } from 'ionic-angular';
-
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 /**
  * Generated class for the ProcessPage page.
  *
@@ -42,9 +42,8 @@ export class ProcessPage {
     private barcode: BarcodeProvider,
     private contentProvider: ContentProvider,
     private sendData: SendDataProvider,
+    private androidPermissions: AndroidPermissions,
     private fabButton: FabButtonProvider) {
-
-
 
   }
 
@@ -83,20 +82,19 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
     let _currentIndex = this.slides.getActiveIndex();
     if (_currentIndex == 1) {
-      this.view = '1.1';
+      //this.view = '1.1';
       this.showBarcode();
     } else if (_currentIndex == 2) {
       this.view = "2.1";
     } else if (_currentIndex == 3) {
       this.view = '3.1';
-
       this.postData.scannedDate = this.date;
       this.postData.purchasedFrom = this.purchaseFrom;
+      console.log(this.purchaseFromDetail[this.purchaseFrom]);
       this.postData.purchasedName = this.purchaseFromDetail[this.purchaseFrom];
       this.postData.productDose = this.packageType;
       this.postData.scanStatus = "pass";
       this.postData.userConclusion = this.verificationResult;
-
       this.sendData.send(this.postData).then((data) => {
         console.log(data);
         this.view = '3.s'
@@ -113,8 +111,6 @@ export class ProcessPage {
 
   changeView(view) {
     this.view = view;
-
-
   }
 
   buttonClick() {
@@ -133,11 +129,13 @@ export class ProcessPage {
           this.view = "1.e";
         }
       }).catch((err) => {
-        //this.view = "1.ee";
+        console.log("scan");
         this.slides.lockSwipes(false);
         this.slides.slideTo(0);
         this.slides.lockSwipes(true);
       })
+    }).catch((err)=> {
+      this.changeView('1.p');
     })
   }
 

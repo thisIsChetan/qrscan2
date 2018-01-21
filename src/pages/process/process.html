@@ -14,11 +14,6 @@
     </ion-row>
   </ion-grid>
   <ion-navbar *ngIf="view == '2.3'">
-    <ion-buttons icon-only clear left>
-      <button ion-button (tap)="changeView('2.1')">
-        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-title>
       <span *ngIf="packageType == '5mg'">{{ "PROCESS.5MG_GUIDE" | translate }}</span>
       <span *ngIf="packageType == '20mg'">{{ "PROCESS.20MG_GUIDE" | translate }}</span>
@@ -91,6 +86,9 @@
       <section *ngIf="view == '1.ee'">
         <alert-view [text]=" 'ALERT_MSG.SYSTEM_ENCOUNTERED_ERROR' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
+      <section *ngIf="view == '1.p'">
+        <alert-view [text]=" 'Change camera permission'  " [buttonText]="'OK'"  (buttonClick)="resetValidation()"></alert-view>
+      </section>
     </ion-slide>
 
     <ion-slide>
@@ -126,7 +124,7 @@
 
       <section *ngIf="view == '2.3'">
         <div class="medImg">
-          <img [src]="medImgURL">
+          <img [src]="medImgURL" imageViewer (close)="callbackAfterImageViewerCloses()">
         </div>
         <div class="noticeBtn">
           <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
