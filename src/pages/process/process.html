@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header (click)="fabClose(fab)">
   <ion-grid [ngClass]="'img'+currentIndex">
     <ion-row>
       <ion-col col-3> {{ "PROCESS.PRODUCT_SOURCE" | translate }} </ion-col>
@@ -14,11 +14,6 @@
     </ion-row>
   </ion-grid>
   <ion-navbar *ngIf="view == '2.3'">
-    <ion-buttons icon-only clear left>
-      <button ion-button (tap)="changeView('2.1')">
-        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-title>
       <span *ngIf="packageType == '5mg'">{{ "PROCESS.5MG_GUIDE" | translate }}</span>
       <span *ngIf="packageType == '20mg'">{{ "PROCESS.20MG_GUIDE" | translate }}</span>
@@ -27,7 +22,7 @@
 </ion-header>
 
 
-<ion-content padding no-bounce>
+<ion-content padding no-bounce (click)="fabClose(fab)" class="no-scroll">
 
   <ion-slides (ionSlideDidChange)="slideChanged()" [ngClass]="{'slide0':currentIndex == 0, 'slide-any': currentIndex !=0}">
     <ion-slide>
@@ -46,7 +41,7 @@
           </ion-label>
           <ion-input (focus)="focusit('HOSPITAL')" [(ngModel)]="purchaseFromDetail.HOSPITAL" type="text" [placeholder]=" 'PROCESS.INPUT_PLACEHOLDER' | translate "></ion-input>
         </ion-item>
-        
+
         <ion-item no-lines (tap)="purchaseFrom = 'PHARMACY'">
           <ion-avatar item-start>
             <img [src]="purchaseFrom == 'PHARMACY' ? 'assets/imgs/redio-button-click.png' : 'assets/imgs/redio-button-unclick.png'">
@@ -91,6 +86,9 @@
       <section *ngIf="view == '1.ee'">
         <alert-view [text]=" 'ALERT_MSG.SYSTEM_ENCOUNTERED_ERROR' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
+      <section *ngIf="view == '1.p'">
+        <alert-view [text]=" 'Change camera permission'  " [buttonText]="'OK'"  (buttonClick)="resetValidation()"></alert-view>
+      </section>
     </ion-slide>
 
     <ion-slide>
@@ -126,7 +124,7 @@
 
       <section *ngIf="view == '2.3'">
         <div class="medImg">
-          <img [src]="medImgURL">
+          <img [src]="medImgURL" imageViewer (close)="callbackAfterImageViewerCloses()">
         </div>
         <div class="noticeBtn">
           <span [innerHTML]=" 'PROCESS.NOTICE' | translate "> </span>
@@ -188,23 +186,24 @@
     </ion-slide>
 
   </ion-slides>
-
-  <ion-fab right bottom #fab>
-    <img ion-fab src="assets/imgs/menu.png">
-    <span>{{ "FABMENU.LABEL" | translate }}</span>
-    <ion-fab-list side="top">
-      <button ion-fab (click)="fabButton.showPrivacy(fab)">
-        <ion-label>{{ "ALERT_MSG.PRIVACY_CONTENT" | translate }}</ion-label>
-      </button>
-      <button ion-fab (click)="fabButton.showContact(fab)">
-        <ion-label>{{ "ALERT_MSG.CONTACT_INFORMATION" | translate }}</ion-label>
-      </button>
-    </ion-fab-list>
-  </ion-fab>
 </ion-content>
 
+<ion-fab right bottom #fab>
+  <img ion-fab src="assets/imgs/menu.png">
+  <span>{{ "FABMENU.LABEL" | translate }}</span>
+  <ion-fab-list side="top">
+    <button ion-fab (click)="fabButton.showPrivacy(fab)">
+      <ion-label>{{ "ALERT_MSG.PRIVACY_CONTENT" | translate }}</ion-label>
+    </button>
+    <button ion-fab (click)="fabButton.showContact(fab)">
+      <ion-label>{{ "ALERT_MSG.CONTACT_INFORMATION" | translate }}</ion-label>
+    </button>
+  </ion-fab-list>
+</ion-fab>
 
-<ion-footer no-border>
+
+
+<ion-footer no-border (click)="fabClose(fab)">
   <ion-item no-lines>
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">

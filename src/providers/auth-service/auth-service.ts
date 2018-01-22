@@ -16,19 +16,6 @@ export class AuthServiceProvider {
   constructor(private http: HTTP) {
     console.log('Hello AuthServiceProvider Provider');
   }
-
-  // isValid(credentials){
-  //     let headers = new Headers({ 
-  //       'Content-Type': 'application/json'
-  //    });
-  //     let data = {
-  //       app_authentication_code: credentials
-  //     }
-
-  //     return this.http.post(GLOBALS.AUTH_URL, data,{headers : headers})
-  //     .map(res => res.json())
-
-  // }
   isValid(credentials){
 
     return new Promise((resolve, reject)=>{      

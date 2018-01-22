@@ -4,13 +4,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Camera } from '@ionic-native/camera';
 import { HttpModule } from '@angular/http';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { IonicStorageModule } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
-import {TranslateModule, TranslateLoader , TranslateService} from '@ngx-translate/core';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { LoginPage } from '../pages/login/login';
 import { ProcessPage } from '../pages/process/process';
@@ -25,11 +27,12 @@ import { ComponentsModule } from '../components/components.module'
 import { BarcodeProvider } from '../providers/barcode/barcode';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ContentProvider } from '../providers/content/content';
-import { SendDataProvider } from '../providers/send-data/send-data'; 
+import { SendDataProvider } from '../providers/send-data/send-data';
 import { HTTP } from '@ionic-native/http';
 import { ContactProvider } from '../providers/contact/contact';
 import { TermsOfUseProvider } from '../providers/terms-of-use/terms-of-use';
 import { FabButtonProvider } from '../providers/fab-button/fab-button';
+import { CheckConnectionProvider } from '../providers/check-connection/check-connection';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,16 +46,17 @@ export function createTranslateLoader(http: HttpClient) {
     TermsAndConditionsPage
   ],
   imports: [
+    IonicImageViewerModule,
     BrowserModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
       }
-  }),
+    }),
     HttpModule,
     IonicModule.forRoot(MyApp, {
       preloadModules: true,
@@ -74,7 +78,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider,
     Camera,
     BarcodeProvider,
@@ -87,13 +91,15 @@ export function createTranslateLoader(http: HttpClient) {
     ContactProvider,
     TermsOfUseProvider,
     FabButtonProvider,
-    Network
+    AndroidPermissions,
+    Network,
+    CheckConnectionProvider
   ]
 })
 
-export class AppModule { 
+export class AppModule {
   constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
-}
+  }
 }
 

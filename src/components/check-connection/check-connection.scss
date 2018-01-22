@@ -1,0 +1,31 @@
+check-connection {
+
+    section{
+        background: url(../assets/imgs/popup-bg.png);
+        background-repeat: no-repeat;
+        margin: auto;
+        background-size: 100% 100%;
+        padding: 22px;
+        height: auto;
+        min-height: 290px;
+        width:85%;
+        max-width: 388px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction:column;        
+        p{
+            color: white;
+        }
+        
+        div{
+            background: url(../assets/imgs/popup-button-bg.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 64%;
+            padding: 6px;
+            color: white;
+            text-align: center;
+        }
+}
+}

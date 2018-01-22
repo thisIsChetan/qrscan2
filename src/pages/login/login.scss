@@ -65,12 +65,14 @@ page-login {
            right: 5%;
            bottom: 40%;
            margin: 0 auto;
+           ion-list{
            ion-label{
                white-space: pre-line !important;
                color: white;
            }
            input[type=tel] {
             -webkit-text-security: disc;
+            width: 100%;
         }
 
            ion-item{
@@ -87,21 +89,28 @@ page-login {
                    color: white;
                    font-weight: bold;
                  }
+                 .input-md[clearInput] .text-input {
+                    padding-right: 30px;
+                    width: 100%;
+                }
                  .searchBtn{
                     display: flex;
                     align-items: center !important;
                     justify-content: center !important;
-                 [ion-button]{
-                 text-decoration: none;
-                 color: white !important;
-                 border-radius: 20% !important;
-                 background: linear-gradient(top, #c91640 43%,#f00038 );
+                     [ion-button]{
+                     text-decoration: none;
+                     color: white !important;
+                     height: 35px;
+                     width: 34px;
+                    border-radius: 20% !important;
+                     background: linear-gradient(top, #c91640 43%,#f00038 );
                  ion-icon{
                      font-weight: bold;
                  }
                  }
                 }
            }
+        }
        }
 
        span{

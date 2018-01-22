@@ -31,11 +31,17 @@ ion-content{
 body.keyboard-is-open ion-footer {
     display: none;
   }
-
+  body.keyboard-is-open  ion-fab {
+    display: none;
+  }
+ 
   ion-fab {
     background-size: cover;
-    bottom: 0px !important; 
+    bottom: 50px !important;
 
+    span{
+        color: white !important;
+    }
   .fab{
     background-color: transparent;
     border-radius: 0px !important;
@@ -62,7 +68,7 @@ ion-fab-list {
     width: 100px;
 
     span{
-        color: color !important;
+        color: white !important;
         text-align: center;
     }
     .fab-in-list{
@@ -124,4 +130,8 @@ ion-footer{
         }
     }
     
+}
+
+.no-scroll .scroll-content{
+    overflow: hidden;
 }
