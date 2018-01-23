@@ -6,6 +6,7 @@
           <ion-item>
             <ion-label>
               {{ "LOGINPAGE.LABEL" | translate }}
+              
             </ion-label>
           </ion-item>
 
@@ -75,6 +76,6 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> {{ "FOOTER.ADDRESS" | translate }} </p>
+    <p [innerHTML]="'FOOTER.ADDRESS' | translate"> </p>
   </ion-item>
 </ion-footer>
