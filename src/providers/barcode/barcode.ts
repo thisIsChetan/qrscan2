@@ -60,11 +60,22 @@ export class BarcodeProvider {
       this.http.useBasicAuth(GLOBALS.API_AUTH_UNAME,GLOBALS.API_AUTH_PW);
       this.http.post(GLOBALS.BARCODE_URL, data, headers).then((res: any)=>{
         console.log("ExceededData:"+JSON.parse(res.data).Frequency_exceeded +"Exists:"+JSON.parse(res.data).Exists);
-        if(JSON.parse(res.data).Exists=='true' && JSON.parse(res.data).Frequency_exceeded == 'false'){
-          resolve(true);
-        }
-        else{
-          resolve(false);
+        // 1.ee sys err 1.e call/auth faild
+        // Exists   Frequency_exceeded
+        // t          t => 1.ee
+        // t          f => 1.s
+        // f          t => 1.e
+        // f          f => 1.e
+        //
+
+        let exist = JSON.parse(res.data).Exists;
+        let freq = JSON.parse(res.data).Frequency_exceeded;
+        if(exist == 'true' && freq == 'true'){
+          resolve('1.ee');
+        }else if(exist == 'true' && freq == 'false'){
+          resolve('1.s');
+        }else if(exist == 'false'){
+          resolve('1.e');
         }
        
       }).catch((err)=>{

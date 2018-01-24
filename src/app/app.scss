@@ -19,10 +19,6 @@ ion-content{
     background-size: contain;
 }
 
-a {
-    color: white;
-}
-
 .red-button{
     background: url(../assets/imgs/popup-button-bg.png);
     background-size: 100% 100%;
@@ -30,6 +26,11 @@ a {
     width: 64%;
     padding: 6px;
     color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none !important;
 }
 
 body.keyboard-is-open ion-footer {
@@ -54,7 +55,7 @@ body.keyboard-is-open ion-footer {
     height: 33px;
 }
 ion-fab-list {
-    margin: 47px -61px !important;
+    margin: 47px -89px !important;
     position: absolute;
     border-radius: 5px;
     color: white !important;

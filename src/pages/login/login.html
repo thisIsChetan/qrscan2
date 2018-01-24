@@ -6,7 +6,6 @@
           <ion-item>
             <ion-label>
               {{ "LOGINPAGE.LABEL" | translate }}
-              
             </ion-label>
           </ion-item>
 
@@ -51,14 +50,16 @@
           </button>
         </ion-item>
       </ion-list>
-    </ion-slide>
+ </ion-slide>
+
+
   </ion-slides>
   <section *ngIf="view == '2' && this.currentIndex == 0">
     <alert-view [text]="txt" [buttonText]="'OK'" (buttonClick)="reset()"></alert-view>
   </section>
 </ion-content>
 
-<ion-fab right bottom #fab >
+<ion-fab right bottom #fab *ngIf="currentIndex != 2" >
   <img ion-fab src="assets/imgs/menu.png">
   <span> {{ "FABMENU.LABEL" | translate }} </span>
   <ion-fab-list side="top">

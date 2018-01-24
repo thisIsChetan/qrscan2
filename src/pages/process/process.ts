@@ -5,7 +5,7 @@ import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
 import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { FabContainer } from 'ionic-angular';
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the ProcessPage page.
  *
@@ -40,9 +40,9 @@ export class ProcessPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private barcode: BarcodeProvider,
+    private alertCtrl: AlertController,
     private contentProvider: ContentProvider,
     private sendData: SendDataProvider,
-    private androidPermissions: AndroidPermissions,
     private fabButton: FabButtonProvider) {
 
   }
@@ -82,8 +82,8 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
     let _currentIndex = this.slides.getActiveIndex();
     if (_currentIndex == 1) {
-      //this.view = '1.1';
       this.showBarcode();
+      this.view = '1.1';
     } else if (_currentIndex == 2) {
       this.view = "2.1";
     } else if (_currentIndex == 3) {
@@ -120,19 +120,18 @@ export class ProcessPage {
 
   showBarcode() {
     this.barcode.scan().then((data: any) => {
-      this.postData.scannedCode = data.text;
-      this.barcode.validate(data).then((isValid) => {
-        if (isValid) {
-          this.view = "1.s";
-        }
-        else {
-          this.view = "1.e";
-        }
-      }).catch((err) => {
+      if(data.text == ""){
         console.log("scan");
         this.slides.lockSwipes(false);
         this.slides.slideTo(0);
         this.slides.lockSwipes(true);
+        return;
+      }
+      this.postData.scannedCode = data.text;
+      this.barcode.validate(data).then((view: string) => {
+          this.view = view;
+      }).catch((err) => {
+        this.view = '1.ee';
       })
     }).catch((err)=> {
       this.changeView('1.p');
@@ -146,6 +145,12 @@ export class ProcessPage {
       this.medImgURL = url;
       console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", url)
       this.changeView('2.3')
+      let alert = this.alertCtrl.create({
+        message:  '請點擊放大圖片',
+        buttons: ['OK']
+      });
+      alert.present();
+
     }).catch((err) => {
       // alert("Please check your network connection");
     })

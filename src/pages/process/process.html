@@ -87,7 +87,7 @@
         <alert-view [text]=" 'ALERT_MSG.SYSTEM_ENCOUNTERED_ERROR' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '1.p'">
-        <alert-view [text]=" 'Change camera permission'  " [buttonText]="'OK'"  (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]=" 'PROCESS.CAMERA_PERMISSION' | translate  " [buttonText]="'OK'"  (buttonClick)="resetValidation()"></alert-view>
       </section>
     </ion-slide>
 
@@ -208,7 +208,7 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p> {{ "FOOTER.ADDRESS" | translate }} </p>
+    <p [innerHTML]="'FOOTER.ADDRESS' | translate"> </p>
     <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
       <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>

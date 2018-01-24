@@ -31,6 +31,7 @@ export class LoginPage {
   @ViewChild(Slides) slides: Slides;
 
   password: string = '';
+  enable:boolean=false;
   version: string = '';
   errorMsg: string = '';
   view: string = '1';
@@ -80,7 +81,7 @@ export class LoginPage {
 
   disagree() {
     let confirm = this.alertCtrl.create({
-      title: '您是否確定離開此APP?',
+      title: '您於使用聲明及隱私聲明選擇「不同意」, 您將會離開此APP.  確定要離開此應用程式嗎?',
       buttons: [
         {
           text: '是',
@@ -103,12 +104,12 @@ export class LoginPage {
   }
 
   slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    if (currentIndex == 2) {
+    this.currentIndex = this.slides.getActiveIndex();
+    if (this.currentIndex == 2) {
       this.next = "active";
 
     }
-    else if (currentIndex == 1) {
+    else if (this.currentIndex == 1) {
       cordova.plugins.Keyboard.close();
     }
     console.log('Current index is', this.next);
@@ -124,6 +125,7 @@ export class LoginPage {
 
   navigateToProcess() {
     this.isenable = true;
+
     this.termsOfUseProvide.getVersion().then((data) => {
       this.storage.set('id', data);
       this.storage.set('password', this.password);
@@ -173,13 +175,13 @@ export class LoginPage {
               this.slides.lockSwipes(true);
             }
             else {
-              this.errorMsg = "Wrong Password";
+              this.errorMsg = "您輸入的認證碼錯誤, 請確認後重新輸入, 若有疑問請洽0800-365-106";
             }
           }
         }).catch((err) => {
           console.log(err.status);
           if(err.status == 0){
-            this.errorMsg = "Please check your network connection.";
+           this.errorMsg = "網路或系統異常,請稍後重試";
           }
         })
 

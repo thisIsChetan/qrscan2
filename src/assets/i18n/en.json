@@ -1,9 +1,9 @@
 {
     "NOTICE": {
-        "MSG": "提醒您!<br> 此應用程式僅供一由醫師處方犀利士之病患查詢參品使用 <br> 每筆查詢結果均會回報至台灣禮來公司 <br>敬請謹慎操作 謝謝!"
+        "MSG": "提醒您!<br>此應用程式僅供已由醫師處方犀利士之病患查詢參品使用<br>每筆查詢結果均會回報至台灣禮來公司<br>敬請謹慎操作 謝謝!"
     },
     "FOOTER": {
-        "ADDRESS": "台灣禮來股份有限公司 台北市復興北路365號11樓 TEL: <a href=\"tel:(02) 2715-2950 \" >(02) 2715-2950</a>"
+        "ADDRESS": "台灣禮來股份有限公司 台北市復興北路365號11樓 TEL:  <a href=\"tel:(02) 2715-2950 \" >(02) 2715-2950</a>"
     },
     "FABMENU": {
         "LABEL": "選單"
@@ -33,26 +33,27 @@
         "LABEL_SLIDE2": "針對上述犀利士外包裝:",
         "ALL_CHECKPOINT":"每項特徵均符合描述",
         "SOME":"有特徵不符合描述",
+        "CAMERA_PERMISSION":"請到手機的 [設定] 功能開啟 [允許APP取用相機] 的設定.",
         "NOT_SURE":"我不確定每項特徵是否符合描述"
     },
     "ALERT_MSG": {
         "CODE_VALIDATED": "[資料吻合] <br> 請進行下一步",
-        "PRODDUCT_AUTHENTICATION_FAILED": "資料不吻合台灣禮來公司原廠出貨資訊<br>請於服務時間電洽:<br><a href=\"tel:0809-009-369 \" >0809-009-369</a>  <br>打擊偽藥免費服務專線<br>或<br><a href=\"tel:0800-285-000 \" >0800-285-000</a> ",
-        "SYSTEM_ENCOUNTERED_ERROR": "系統異常<br> 請於服務時間電洽:<br><a href=\"tel:0809-009-369 \" >0809-009-369</a><br>打擊偽藥免費服務專線",
+        "PRODDUCT_AUTHENTICATION_FAILED": "資料不吻合台灣禮來公司原廠出貨資訊<br>請於服務時間電洽:<br> <a href=\"tel:0809-009-369 \" >0809-009-369</a>  <br>打擊偽藥免費服務專線<br>或<br>  <a href=\"tel:0800-285-000 \" >0800-285-000</a> ",
+        "SYSTEM_ENCOUNTERED_ERROR": "系統異常<br> 請於服務時間電洽:<br>  <a href=\"tel:0809-009-369 \" >0809-009-369</a><br>打擊偽藥免費服務專線",
         "VALIDATION_IMAGE": "請按照下列步驟依序比對",
         "AUTHENTICATION_PASSED":"資料吻合台灣禮來公司原廠出貨資訊<br>此犀利士為原廠正品",
-        "CALL_CENTER":"請於服務時間電洽:<br> <a href=\"tel:0809-009-369 \" >0809-009-369</a>  <br>打擊偽藥免費服務專線<br>將有專人協助您處理!",
+        "CALL_CENTER":"請於服務時間電洽:<br>  <a href=\"tel:0809-009-369 \" >0809-009-369</a>  <br>打擊偽藥免費服務專線<br>將有專人協助您處理!",
         "DETIALS_SEND":"系統上傳中…<br>已記錄此筆資料 ",
         "VALIDATE_NEXT":"查詢下一筆",
-        "PRIVACY_CONTENT":"隱私權",
+        "PRIVACY_CONTENT":"使用條款 及隱私權",
         "CONTACT_INFORMATION":"連絡我們",
         "TERMS_OF_USE":"使用條款",
         "SYSTEM_VALIDATION":"系統比對資料中…",
         "CONFIRMATION_DATA_SENT":"此筆資料已上傳系統中.",
         "SENDING_DATA_SERVER":"資料上傳系統中…",
-        "BARCODE_SCANNING_PROGRESS":"QRCode 掃描中…",
+        "BARCODE_SCANNING_PROGRESS":"黑底面之二維條碼掃描中…",
         "CANCEL":"取消",
+        "NETWORK_ERROR":"網路或系統異常,請稍後重試",
         "OK":"OK"
-       
     }
 }
