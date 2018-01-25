@@ -82,8 +82,7 @@ export class ProcessPage {
     this.slides.lockSwipes(true);
     let _currentIndex = this.slides.getActiveIndex();
     if (_currentIndex == 1) {
-      this.showBarcode();
-      this.view = '1.1';
+      this.view = '1.c';
     } else if (_currentIndex == 2) {
       this.view = "2.1";
     } else if (_currentIndex == 3) {
@@ -105,37 +104,41 @@ export class ProcessPage {
     }
 
   }
+
   slideChanged() {
     this.currentIndex = this.slides.getActiveIndex();
   }
 
   changeView(view) {
+    console.log(view);
     this.view = view;
   }
 
-  buttonClick() {
-    alert("dsg");
-  }
   //Slide 1
 
   showBarcode() {
+ 
     this.barcode.scan().then((data: any) => {
+      this.view = '1.1';
       if(data.text == ""){
-        console.log("scan");
         this.slides.lockSwipes(false);
-        this.slides.slideTo(0);
+        this.slides.slideTo(0,0);
         this.slides.lockSwipes(true);
         return;
       }
+      else{
+        this.view = '1.1';
       this.postData.scannedCode = data.text;
       this.barcode.validate(data).then((view: string) => {
           this.view = view;
       }).catch((err) => {
         this.view = '1.ee';
       })
+    }
     }).catch((err)=> {
       this.changeView('1.p');
     })
+  
   }
 
   medImgURL: string;

@@ -81,23 +81,17 @@ export class LoginPage {
 
   disagree() {
     let confirm = this.alertCtrl.create({
-      title: '您於使用聲明及隱私聲明選擇「不同意」, 您將會離開此APP.  確定要離開此應用程式嗎?',
+      title: "您於使用聲明及隱私聲明選擇「不同意」, 此應用程式會無法進行啟動. 您確定不同意嗎?",
       buttons: [
         {
-          text: '是',
+          text: 'OK',
           handler: () => {
-            this.storage.clear().then((val) => {
-              this.platform.exitApp();
-            })
-          }
-        },
-        {
-          text: '否',
-          handler: () => {
-            return true;
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(0, 500);
+            this.slides.lockSwipes(true);
+            this.password = '';
           }
         }
-
       ]
     });
     confirm.present()
@@ -141,8 +135,6 @@ export class LoginPage {
       console.log(err);
     })
 
-
-
   }
 
   nextTerms() {
@@ -153,7 +145,7 @@ export class LoginPage {
     this.termsOfUseProvide.getTerms().then((data: string) => {
       this.termsOfUse = data;
     }).catch((err) => {
-      alert("error");
+     // alert("error");
     })
 
 
@@ -175,7 +167,7 @@ export class LoginPage {
               this.slides.lockSwipes(true);
             }
             else {
-              this.errorMsg = "您輸入的認證碼錯誤, 請確認後重新輸入, 若有疑問請洽0800-365-106";
+              this.errorMsg = "您輸入的認證碼錯誤, 請確認後重新輸入,若有疑問請洽 0809-009-369";
             }
           }
         }).catch((err) => {

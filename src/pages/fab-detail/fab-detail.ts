@@ -33,7 +33,7 @@ export class FabDetailPage {
       this.content = data;
     })
     if(this.type == "Privacy"){
-      this.head="隱私權";
+      this.head="使用聲明及隱私聲明";
       
     }else if(this.type == "Contact"){
       this.head="連絡我們";
