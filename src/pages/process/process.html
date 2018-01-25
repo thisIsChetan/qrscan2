@@ -69,6 +69,9 @@
     </ion-slide>
 
     <ion-slide>
+      <section *ngIf="view == '1.c'">
+        <alert-view [text]="'ALERT_MSG.BEFORE_CAMERA_MSG' | translate" [buttonText]="'OK'" (buttonClick)="showBarcode()"></alert-view>
+      </section>
       <section *ngIf="view == '1.1'">
         <alert-view [text]="'ALERT_MSG.BARCODE_SCANNING_PROGRESS' | translate" [buttonText]="' '"></alert-view>
       </section>
@@ -87,7 +90,7 @@
         <alert-view [text]=" 'ALERT_MSG.SYSTEM_ENCOUNTERED_ERROR' | translate " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '1.p'">
-        <alert-view [text]=" 'PROCESS.CAMERA_PERMISSION' | translate  " [buttonText]="'OK'"  (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]=" 'PROCESS.CAMERA_PERMISSION' | translate  " [buttonText]="'OK'" (buttonClick)="resetValidation()"></alert-view>
       </section>
     </ion-slide>
 
@@ -180,7 +183,7 @@
         <alert-view [text]=" 'ALERT_MSG.DETIALS_SEND' | translate " [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
       </section>
       <section *ngIf="view == '3.e'">
-        <alert-view [text]="'Validation details send Error'" [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
+        <alert-view [text]="'ALERT_MSG.NETWORK_ERROR' | translate " [buttonText]="'ALERT_MSG.VALIDATE_NEXT' | translate" (buttonClick)="resetValidation()"></alert-view>
       </section>
 
     </ion-slide>
@@ -208,8 +211,7 @@
     <ion-thumbnail item-start>
       <img src="assets/imgs/lilly-logo.png">
     </ion-thumbnail>
-    <p [innerHTML]="'FOOTER.ADDRESS' | translate"> </p>
-    <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
+   <button ion-button clear item-end (click)="nextSlide()" *ngIf=" currentIndex == 0 && purchaseFrom != '' ">
       <span>{{ "PROCESS.NEXT" | translate }}</span>
       <div class="nextIcon"></div>
     </button>
