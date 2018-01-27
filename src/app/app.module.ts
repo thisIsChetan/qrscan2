@@ -22,7 +22,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
 
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
-import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
 import { ComponentsModule } from '../components/components.module'
 import { BarcodeProvider } from '../providers/barcode/barcode';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -42,8 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     LoginPage,
-    ProcessPage,
-    TermsAndConditionsPage
+    ProcessPage
   ],
   imports: [
     IonicImageViewerModule,
@@ -72,8 +70,7 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     LoginPage,
-    ProcessPage,
-    TermsAndConditionsPage
+    ProcessPage
   ],
   providers: [
     StatusBar,

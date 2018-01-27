@@ -8,6 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import { TermsOfUseProvider } from "../providers/terms-of-use/terms-of-use";
 import { Storage } from '@ionic/storage';
 import { ProcessPage } from '../pages/process/process';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +20,9 @@ export class MyApp {
   flag: boolean = false;
   password = '';
   newVersion: any;
-  
+  alertTitle:string;
+  yes:string;
+  no:string;
 
   constructor(platform: Platform,
     statusBar: StatusBar,
@@ -26,21 +30,27 @@ export class MyApp {
     keyboard: Keyboard,
     public termsOfUseProvide: TermsOfUseProvider,
     private ga: GoogleAnalytics,
+    private translate: TranslateService,
     public alertCtrl: AlertController,
     private storage: Storage) {
-
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      
+
+      translate.get("COMMON").subscribe(value => {
+        this.alertTitle=value.CONFORM_ALERT_MSG;
+        this.yes=value.YES;
+        this.no=value.NO;
+      })
+
       platform.registerBackButtonAction(() => {
         let confirm = this.alertCtrl.create({
-          title: '您是否確定離開此APP?',
+          title: this.alertTitle,
           buttons: [
             {
-              text: '是',
+              text: this.yes,
               handler: () => {
                 this.storage.clear().then((val) => {
                   platform.exitApp();
@@ -48,7 +58,7 @@ export class MyApp {
               }
             },
             {
-              text: '否',
+              text: this.no,
               handler: () => {
                 return true;
               }

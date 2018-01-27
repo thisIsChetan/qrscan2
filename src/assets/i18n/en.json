@@ -55,6 +55,16 @@
         "CANCEL":"取消",
         "BEFORE_CAMERA_MSG":"請掃描盒側黑底面之二維條碼",
         "NETWORK_ERROR":"網路或系統異常,請稍後重試",
+        "WRONG_PASSWORD":"您輸入的認證碼錯誤, 請確認後重新輸入,若有疑問請洽 0809-009-369",
         "OK":"OK"
+    },
+    "COMMON":{
+        "CONFORM_ALERT_MSG":"您是否確定離開此APP?",
+        "YES":"是",
+        "NO":"否",
+        "OK":"OK",
+        "DISAGREE_TITLE":"您於使用聲明及隱私聲明選擇「不同意」, 此應用程式會無法進行啟動. 您確定不同意嗎?",
+        "PRIVACY":"使用聲明及隱私聲明",
+        "CONTACT":"連絡我們"
     }
 }

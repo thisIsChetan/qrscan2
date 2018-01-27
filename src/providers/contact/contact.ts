@@ -18,8 +18,6 @@ export class ContactProvider {
 
   getData(){
 
-    let headers = {
-    };
     this.http.setHeader("Accept", "application/json");
     this.http.setHeader("Content-Type", "application/json");
 
