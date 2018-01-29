@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { Cordova } from '@ionic-native/core';
 import { FabContainer } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, Platform, Slides, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ContactProvider } from "../../providers/contact/contact";
 import { TermsOfUseProvider } from "../../providers/terms-of-use/terms-of-use";
 import { Storage } from '@ionic/storage';
-import { Network } from '@ionic-native/network';
 import { ProcessPage } from '../process/process';
+import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { TranslateService } from '@ngx-translate/core';
 
 declare var cordova: any;
@@ -54,6 +53,7 @@ export class LoginPage {
     private platform: Platform,
     private translate: TranslateService,
     public alertCtrl: AlertController,
+    private fabButton: FabButtonProvider,
     private storage: Storage) {
     this.view = '1';
     
@@ -119,6 +119,7 @@ export class LoginPage {
 
   privacy(fab: FabContainer) {
     fab.close();
+    //alert(fab);
     this.view = '2';
     this.contactProvider.getData();
   }
@@ -173,7 +174,7 @@ export class LoginPage {
               this.slides.lockSwipes(true);
             }
             else {
-              this.errorMsg = "您輸入的認證碼錯誤, 請確認後重新輸入,若有疑問請洽 0809-009-369";
+              this.errorMsg = this.wrongPassword;
             }
           }
         }).catch((err) => {

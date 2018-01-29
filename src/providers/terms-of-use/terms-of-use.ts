@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GLOBALS } from '../../data/globals'
 import { HTTP } from '@ionic-native/http';
-import { Storage } from '@ionic/storage';
 
 /*
   Generated class for the TermsOfUseProvider provider.
@@ -12,7 +11,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class TermsOfUseProvider {
 
-  constructor(public http: HTTP, private storage:Storage) {
+  constructor(public http: HTTP) {
     console.log('Hello TermsOfUseProvider Provider');
   }
 

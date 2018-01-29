@@ -23,7 +23,7 @@ export class MyApp {
   alertTitle:string;
   yes:string;
   no:string;
-
+  
   constructor(platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,

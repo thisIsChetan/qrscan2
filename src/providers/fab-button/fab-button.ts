@@ -46,7 +46,7 @@ export class FabButtonProvider {
         }else if(type == "Contact"){
           url = GLOBALS.CONTACT_INFO
       }
-      let headers = {};
+
       this.http.setDataSerializer("json");
       this.http.setHeader("Accept", "application/json");
       this.http.setHeader("Content-Type", "application/json");

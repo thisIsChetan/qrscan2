@@ -3,9 +3,10 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { BarcodeProvider } from '../../providers/barcode/barcode'
 import { ContentProvider } from '../../providers/content/content'
 import { SendDataProvider } from '../../providers/send-data/send-data'
-import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { FabContainer } from 'ionic-angular';
+import { FabButtonProvider } from "../../providers/fab-button/fab-button"
 import { AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 /**
  * Generated class for the ProcessPage page.
  *
@@ -24,6 +25,7 @@ export class ProcessPage {
   purchaseFrom: string = '';
   purchaseFromDetail: any = {};
   isImage: boolean = false;
+  zoomImageMsg:string;
   view: string;
 
   // Exists:boolean;
@@ -42,13 +44,17 @@ export class ProcessPage {
     private barcode: BarcodeProvider,
     private alertCtrl: AlertController,
     private contentProvider: ContentProvider,
-    private sendData: SendDataProvider,
-    private fabButton: FabButtonProvider) {
+    private fabButton: FabButtonProvider,
+    private translate: TranslateService,
+    private sendData: SendDataProvider) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProcessPage');
+    this.translate.get("COMMON").subscribe(value => {
+      this.zoomImageMsg=value.ZOOM_IMAGE;
+    });
     this.slides.lockSwipes(true);
   }
 
@@ -149,7 +155,7 @@ export class ProcessPage {
       console.log("SDFGGFGDFGDFGDFSGDFSGDSFGDFSGDFGDFGDF", url)
       this.changeView('2.3')
       let alert = this.alertCtrl.create({
-        message:  '請點擊放大圖片',
+        message:  this.zoomImageMsg,
         buttons: ['OK']
       });
       alert.present();
